@@ -23,6 +23,7 @@ const base =
 export default defineConfig({
   site,
   base,
+  trailingSlash: 'always',
   integrations: [tailwind()],
   compressHTML: true,
   vite: {

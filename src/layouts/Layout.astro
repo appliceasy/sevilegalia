@@ -13,9 +13,14 @@ interface Props {
 }
 
 const { title, description, canonicalPath = Astro.url.pathname } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
 
 const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
-const canonical = `${siteUrl}${canonicalPath === '/' ? '' : canonicalPath}` || undefined;
+const normalizedCanonicalPath =
+  canonicalPath === '/' ? '/' : canonicalPath.endsWith('/') ? canonicalPath : `${canonicalPath}/`;
+const canonical = `${siteUrl}${normalizedCanonicalPath === '/' ? '' : normalizedCanonicalPath}` || undefined;
 const fullTitle = title.includes('|') ? title : `${title} | Sevilegalia`;
 ---
 
@@ -26,8 +31,10 @@ const fullTitle = title.includes('|') ? title : `${title} | Sevilegalia`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#07404E" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" sizes="any" />
+    <link rel="icon" href={withBase('/favicon.png')} type="image/png" sizes="512x512" />
+    <link rel="shortcut icon" href={withBase('/favicon.png')} type="image/png" />
+    <link rel="apple-touch-icon" href={withBase('/favicon.png')} />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
