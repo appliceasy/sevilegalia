@@ -1,0 +1,98 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const meta = {
+  title: 'Política de privacidad',
+  description:
+    'Información sobre el tratamiento de datos personales conforme al RGPD: responsable, finalidades, derechos y conservación. Sevilegalia.',
+};
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/legal/privacidad">
+  <div class="border-b border-neutral-border bg-neutral-surface">
+    <div class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl font-bold text-primary">Política de privacidad</h1>
+      <p class="mt-2 text-sm text-slate-500">Conforme al Reglamento (UE) 2016/679 (RGPD) y la LOPDGDD.</p>
+    </div>
+  </div>
+
+  <article class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
+    <div class="prose prose-slate max-w-3xl prose-headings:font-heading prose-h2:text-primary prose-a:text-accent">
+      <h2>1. Responsable del tratamiento</h2>
+      <p>
+        <strong>Identidad:</strong> Sevilegalia Asesoría Jurídica (<em>denominación a completar</em>).<br />
+        <strong>NIF/CIF:</strong> [PLACEHOLDER]<br />
+        <strong>Dirección:</strong> Calle Ejemplo, 123, 4.º B, 28001 Madrid, España.<br />
+        <strong>Correo electrónico:</strong> <a href="mailto:privacidad@ejemplo-despacho.es">privacidad@ejemplo-despacho.es</a> (correo dedicado — placeholder).
+      </p>
+
+      <h2>2. Finalidad del tratamiento</h2>
+      <p>Los datos personales que nos facilite serán tratados para las siguientes finalidades:</p>
+      <ul>
+        <li>Gestionar las consultas y solicitudes de información realizadas a través del sitio web o por medios ordinarios.</li>
+        <li>Mantener la relación profesional precontractual o contractual cuando proceda.</li>
+        <li>Enviar comunicaciones relacionadas con los servicios solicitados, cuando exista base jurídica adecuada.</li>
+        <li>Cumplir obligaciones legales aplicables al ejercicio de la abogacía y la gestión del despacho.</li>
+        <li>
+          Medición agregada de la audiencia del sitio web (páginas visitadas, volumen de tráfico, origen aproximado del
+          acceso, tipo de dispositivo), cuando se utilice una herramienta de analítica conforme a la política de cookies y,
+          en su caso, a la configuración de consentimiento aplicable.
+        </li>
+      </ul>
+
+      <h2>3. Base jurídica</h2>
+      <p>El tratamiento se legitima en:</p>
+      <ul>
+        <li>
+          <strong>Consentimiento del interesado</strong>, cuando nos contacte voluntariamente o marque la casilla de
+          aceptación de la política de privacidad en formularios.
+        </li>
+        <li>
+          <strong>Interés legítimo</strong>, cuando corresponda para atender solicitudes, gestionar la seguridad del sitio
+          o mejorar la calidad del servicio, respetando sus derechos y libertades fundamentales.
+        </li>
+        <li>
+          <strong>Ejecución de medidas precontractuales o contractuales</strong>, cuando inicie una relación profesional con
+          el despacho.
+        </li>
+        <li><strong>Cumplimiento de obligaciones legales</strong>, cuando la normativa exija conservar o comunicar datos.</li>
+      </ul>
+
+      <h2>4. Conservación de los datos</h2>
+      <p>
+        Los datos se conservarán durante el tiempo necesario para cumplir la finalidad para la que fueron recabados y, en
+        su caso, durante los plazos legales de prescripción aplicables. Transcurridos dichos plazos, se suprimirán con
+        medidas de seguridad adecuadas o se anonimizarán.
+      </p>
+
+      <h2>5. Destinatarios y transferencias</h2>
+      <p>
+        No cederemos sus datos a terceros salvo obligación legal o necesidad para la prestación del servicio (por ejemplo,
+        proveedores de infraestructura que actúen como encargados del tratamiento bajo contrato tipo art. 28 RGPD). No se
+        prevén transferencias internacionales fuera del Espacio Económico Europeo sin garantías adecuadas.
+      </p>
+
+      <h2>6. Derechos del interesado</h2>
+      <p>Usted puede ejercer los siguientes derechos:</p>
+      <ul>
+        <li><strong>Acceso</strong> — conocer qué datos tratamos y con qué finalidad.</li>
+        <li><strong>Rectificación</strong> — corregir datos inexactos o incompletos.</li>
+        <li><strong>Supresión</strong> — solicitar la eliminación cuando proceda.</li>
+        <li><strong>Oposición</strong> — oponerse al tratamiento en determinados supuestos.</li>
+        <li><strong>Limitación</strong> — solicitar la limitación del tratamiento.</li>
+        <li><strong>Portabilidad</strong> — recibir sus datos en formato estructurado, cuando aplique.</li>
+      </ul>
+      <p>
+        Para ejercer sus derechos puede dirigirse a la dirección de correo indicada en el apartado 1, acompañando copia de
+        documento identificativo. Tiene derecho a reclamar ante la Agencia Española de Protección de Datos (
+        <a href="https://www.aepd.es" rel="noopener noreferrer" target="_blank">www.aepd.es</a>).
+      </p>
+
+      <h2>7. Medidas de seguridad</h2>
+      <p>
+        Aplicamos medidas técnicas y organizativas apropiadas para garantizar un nivel de seguridad acorde al riesgo,
+        incluyendo la confidencialidad, integridad y disponibilidad de los datos.
+      </p>
+    </div>
+  </article>
+</Layout>

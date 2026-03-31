@@ -1,0 +1,109 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const meta = {
+  title: 'Despacho',
+  description:
+    'Despacho multidisciplinar especializado en asesoramiento jurídico, fiscal y laboral para empresas, autónomos y particulares.',
+};
+
+const equipoImage = '/sevilegalia-despacho-equipo.png';
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/despacho">
+  <div class="border-b border-neutral-border bg-neutral-surface">
+    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl font-bold text-primary">El despacho</h1>
+      <p class="mt-4 max-w-3xl text-lg text-slate-600">
+        Somos un despacho multidisciplinar especializado en el asesoramiento jurídico, fiscal y laboral, orientado a
+        empresas, autónomos y particulares.
+      </p>
+      <p class="mt-4 max-w-3xl text-slate-600">
+        Nuestro objetivo es proporcionar soluciones eficaces, seguras y adaptadas a cada cliente, garantizando el
+        cumplimiento normativo y la defensa de sus intereses.
+      </p>
+    </div>
+  </div>
+
+  <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="historia-titulo">
+    <h2 id="historia-titulo" class="font-display text-2xl font-bold text-primary">Historia</h2>
+    <div class="prose prose-slate mt-6 max-w-none">
+      <p class="text-slate-600 leading-relaxed">
+        Sevilegalia nace de la vocación de unir excelencia técnica y trato cercano. A lo largo de más de dos décadas
+        hemos acompañado a clientes en procesos de crecimiento, reestructuración y resolución de conflictos, con un
+        enfoque práctico y orientado a resultados.
+      </p>
+      <p class="mt-4 text-slate-600 leading-relaxed">
+        Hemos ampliado nuestras áreas de actuación manteniendo un mismo estándar de calidad: escucha activa, análisis
+        riguroso y comunicación transparente en cada fase del asunto.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-neutral-surface py-16" aria-labelledby="filosofia-titulo">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      <h2 id="filosofia-titulo" class="font-display text-2xl font-bold text-primary">Filosofía</h2>
+      <ul class="mt-6 space-y-4 text-slate-600">
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+          <span
+            ><strong class="text-primary">Integridad:</strong> actuamos con ética profesional y confidencialidad en todos
+            los expedientes.</span
+          >
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+          <span
+            ><strong class="text-primary">Claridad:</strong> explicamos las opciones legales en un lenguaje comprensible,
+            sin renunciar al rigor.</span
+          >
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+          <span
+            ><strong class="text-primary">Compromiso:</strong> defendemos su posición con preparación y seguimiento
+            continuos.</span
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="equipo-titulo">
+    <h2 id="equipo-titulo" class="font-display text-2xl font-bold text-primary">Equipo</h2>
+    <p class="mt-4 max-w-3xl text-slate-600">
+      Contamos con abogados y asesores especializados por materias. A continuación, referencias de ejemplo (sustituir por
+      datos reales del despacho).
+    </p>
+    <div class="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
+      <div class="overflow-hidden rounded-lg shadow-card ring-1 ring-slate-200/80">
+        <img
+          src={equipoImage}
+          alt="Equipo profesional reunido en entorno corporativo colaborativo"
+          width={900}
+          height={600}
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <article class="rounded-lg border border-neutral-border bg-white p-6 shadow-sm">
+          <h3 class="font-heading font-semibold text-primary">Nombre Apellido</h3>
+          <p class="text-sm text-accent">Socia directora — Derecho mercantil</p>
+          <p class="mt-2 text-sm text-slate-600">Colegiada n.º [placeholder]. Especialista en contratación y M&amp;A.</p>
+        </article>
+        <article class="rounded-lg border border-neutral-border bg-white p-6 shadow-sm">
+          <h3 class="font-heading font-semibold text-primary">Nombre Apellido</h3>
+          <p class="text-sm text-accent">Asociado senior — Laboral y fiscal</p>
+          <p class="mt-2 text-sm text-slate-600">Colegiado n.º [placeholder]. Asesoramiento a pymes y autónomos.</p>
+        </article>
+        <article class="rounded-lg border border-neutral-border bg-white p-6 shadow-sm sm:col-span-2">
+          <h3 class="font-heading font-semibold text-primary">Nombre Apellido</h3>
+          <p class="text-sm text-accent">Of counsel — Civil y litigación</p>
+          <p class="mt-2 text-sm text-slate-600">Colegiada n.º [placeholder]. Procedimientos judiciales y extrajudiciales.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>

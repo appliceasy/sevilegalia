@@ -1,0 +1,44 @@
+---
+/**
+ * Monitorización agregada del tráfico (sin backend propio).
+ *
+ * Qué verás con herramientas típicas:
+ * - Visitantes y páginas vistas (cuánta gente entra y qué rutas visitan)
+ * - Origen del tráfico (referrers, campañas si añades UTM)
+ * - Dispositivo/navegador/país a nivel agregado
+ *
+ * No sustituye a un CRM: no sabrás el nombre de cada visitante salvo que
+ * ellos rellenen un formulario (eso ya sería otro tratamiento).
+ *
+ * Configuración: copia .env.example a .env y define UNA opción:
+ * - PUBLIC_PLAUSIBLE_DOMAIN (recomendado, RGPD-friendly, sin cookies por defecto)
+ * - PUBLIC_GA_MEASUREMENT_ID (GA4; en muchos casos UE conviene banner de cookies)
+ *
+ * @see https://plausible.io
+ * @see https://support.google.com/analytics
+ */
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN?.trim();
+const plausibleSrc =
+  import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT_SRC?.trim() || 'https://plausible.io/js/script.js';
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim();
+
+const usePlausible = Boolean(plausibleDomain);
+const useGa = Boolean(gaId) && !usePlausible;
+---
+
+{usePlausible && <script defer data-domain={plausibleDomain} src={plausibleSrc} />}
+{
+  useGa && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+      <script is:inline define:vars={{ measurementId: gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', measurementId);
+      </script>
+    </>
+  )
+}

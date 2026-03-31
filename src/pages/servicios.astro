@@ -1,0 +1,121 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const meta = {
+  title: 'Servicios',
+  description:
+    'Derecho civil, mercantil, laboral, asesoría fiscal y consultoría empresarial. Servicios jurídicos integrales para empresas y particulares.',
+};
+
+const bloques = [
+  {
+    id: 'civil',
+    titulo: 'Derecho Civil',
+    descripcion:
+      'Asesoramiento en relaciones patrimoniales, obligaciones, contratos, responsabilidad civil y reclamaciones de cantidad. Acompañamiento en negociación y, en su caso, en vía judicial o arbitral.',
+    puntos: [
+      'Contratos civiles y revisión de cláusulas',
+      'Reclamaciones por incumplimiento y daños',
+      'Derecho de familia y sucesiones (orientación inicial)',
+      'Propiedad horizontal y conflictos vecinales',
+    ],
+  },
+  {
+    id: 'mercantil',
+    titulo: 'Derecho Mercantil',
+    descripcion:
+      'Apoyo a sociedades y emprendedores en constitución, gobierno corporativo, acuerdos entre socios y operaciones comerciales habituales.',
+    puntos: [
+      'Constitución y modificaciones societarias',
+      'Contratos comerciales y distribución',
+      'Cumplimiento normativo mercantil básico',
+      'Conflictos entre socios y liquidaciones',
+    ],
+  },
+  {
+    id: 'laboral',
+    titulo: 'Derecho Laboral',
+    descripcion:
+      'Prevención y gestión del empleo: contratación, modificaciones, despidos, inspecciones y representación en procedimientos laborales cuando proceda.',
+    puntos: [
+      'Contratos y políticas internas',
+      'Despidos y extinciones negociadas',
+      'Relaciones con la representación legal de los trabajadores',
+      'Litigación laboral y negociación extrajudicial',
+    ],
+  },
+  {
+    id: 'fiscal',
+    titulo: 'Asesoría Fiscal',
+    descripcion:
+      'Planificación fiscal dentro de la legalidad vigente, cumplimiento tributario y preparación ante requerimientos de la administración.',
+    puntos: [
+      'Impuesto sobre sociedades y autónomos',
+      'IVA y operaciones intracomunitarias (orientación)',
+      'Inspecciones y recursos en vía administrativa',
+      'Coordinación con asesoría contable',
+    ],
+  },
+  {
+    id: 'empresarial',
+    titulo: 'Consultoría Empresarial',
+    descripcion:
+      'Visión jurídica integrada en la toma de decisiones: crecimiento, reestructuraciones, compliance básico y apoyo en operaciones del día a día.',
+    puntos: [
+      'Diagnóstico legal preventivo',
+      'Protocolos internos y buenas prácticas',
+      'Due diligence ligera y documentación',
+      'Coordinación con otros asesores externos',
+    ],
+  },
+];
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/servicios">
+  <div class="border-b border-neutral-border bg-neutral-surface">
+    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl font-bold text-primary">Servicios</h1>
+      <p class="mt-4 max-w-3xl text-lg text-slate-600">
+        Áreas de práctica principales. Cada materia se aborda con un plan de trabajo claro y comunicación periódica con el
+        cliente.
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-content space-y-16 px-4 py-16 sm:px-6 lg:px-8">
+    {
+      bloques.map((b, i) => (
+        <section class="scroll-mt-24" aria-labelledby={`servicio-${b.id}`} id={b.id}>
+          <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
+            <p class="text-sm font-medium uppercase tracking-wide text-accent">Área {i + 1}</p>
+            <h2 id={`servicio-${b.id}`} class="font-display mt-2 text-3xl font-bold text-primary">
+              {b.titulo}
+            </h2>
+            <p class="mt-4 text-slate-600 leading-relaxed">{b.descripcion}</p>
+            <h3 class="mt-8 font-heading text-sm font-semibold uppercase tracking-wide text-slate-500">
+              Enfoque y entregables
+            </h3>
+            <ul class="mt-4 space-y-2 text-slate-700">
+              {b.puntos.map((p) => (
+                <li class="flex gap-2">
+                  <span class="text-accent" aria-hidden="true">
+                    ✓
+                  </span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-10">
+              <a
+                href="/contacto"
+                class="inline-flex items-center justify-center rounded bg-accent px-6 py-3 font-heading text-sm font-semibold text-white transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-offset-2"
+              >
+                Contactar
+              </a>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Layout>

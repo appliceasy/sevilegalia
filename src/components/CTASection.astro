@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  buttonLabel: string;
+  buttonHref: string;
+}
+
+const { title, text, buttonLabel, buttonHref } = Astro.props;
+---
+
+<section class="border-y border-neutral-border bg-neutral-surface" aria-labelledby="cta-titulo">
+  <div class="mx-auto max-w-content px-4 py-14 text-center sm:px-6 lg:px-8">
+    <h2 id="cta-titulo" class="font-display text-2xl font-bold text-primary sm:text-3xl">{title}</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-slate-600">{text}</p>
+    <div class="mt-8">
+      <a
+        href={buttonHref}
+        class="inline-flex items-center justify-center rounded border-2 border-primary bg-primary px-8 py-3 font-heading text-sm font-semibold text-white transition hover:bg-primary-muted focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+      >
+        {buttonLabel}
+      </a>
+    </div>
+  </div>
+</section>

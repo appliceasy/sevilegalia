@@ -1,0 +1,115 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTASection from '@/components/CTASection.astro';
+
+const meta = {
+  title: 'Inicio',
+  description:
+    'Asesoría jurídica integral para empresas y particulares. Más de 20 años de experiencia en derecho civil, mercantil, laboral y fiscal.',
+};
+
+const heroImage =
+  'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80';
+const serviciosImage =
+  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80';
+
+const valores = [
+  {
+    titulo: 'Experiencia',
+    texto:
+      'Más de dos décadas asesorando a empresas y particulares en múltiples áreas del derecho.',
+  },
+  {
+    titulo: 'Compromiso',
+    texto: 'Defendemos los intereses de nuestros clientes con rigor, ética y dedicación.',
+  },
+  {
+    titulo: 'Cercanía',
+    texto: 'Trato directo y personalizado, adaptado a cada situación.',
+  },
+];
+
+const serviciosDestacados = [
+  {
+    titulo: 'Asesoría Fiscal y Contable',
+    descripcion: 'Optimización fiscal, cumplimiento normativo y planificación estratégica.',
+  },
+  {
+    titulo: 'Asesoría Laboral',
+    descripcion: 'Gestión laboral integral, contratos, despidos y prevención de conflictos.',
+  },
+  {
+    titulo: 'Gabinete Jurídico',
+    descripcion: 'Asistencia legal en derecho civil, mercantil y administrativo.',
+  },
+];
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/">
+  <Hero
+    title="Soluciones jurídicas y asesoramiento integral para empresas y particulares"
+    subtitle="Más de 20 años ofreciendo seguridad legal, confianza y resultados."
+    ctaLabel="Solicitar consulta"
+    ctaHref="/contacto"
+    imageSrc={heroImage}
+    imageAlt="Interior de oficina jurídica moderna con mesa de reuniones y estantería legal"
+    imageLoading="lazy"
+  />
+
+  <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="valores-titulo">
+    <h2 id="valores-titulo" class="font-display text-center text-3xl font-bold text-primary">
+      Nuestros valores
+    </h2>
+    <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600">
+      La confianza de nuestros clientes se fundamenta en principios claros y un servicio riguroso.
+    </p>
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {
+        valores.map((v) => (
+          <div class="rounded-lg border border-neutral-border bg-neutral-surface p-8 text-center shadow-sm">
+            <h3 class="font-heading text-lg font-semibold text-primary">{v.titulo}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">{v.texto}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-neutral-surface py-16" aria-labelledby="servicios-destacados-titulo">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <h2 id="servicios-destacados-titulo" class="font-display text-3xl font-bold text-primary">
+            Servicios destacados
+          </h2>
+          <p class="mt-4 text-slate-600">
+            Acompañamos a empresas y particulares con soluciones adaptadas a su sector y a su situación concreta.
+          </p>
+          <div class="mt-8 grid gap-6 md:grid-cols-3">
+            {serviciosDestacados.map((s) => <ServiceCard title={s.titulo} description={s.descripcion} />)}
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-card ring-1 ring-slate-200/80">
+          <img
+            src={serviciosImage}
+            alt="Documentos legales y pluma sobre escritorio de trabajo profesional"
+            width={800}
+            height={600}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="¿Necesita asesoramiento?"
+    text="Concerte una primera consulta y explíquenos su caso. Le orientaremos con claridad y confidencialidad."
+    buttonLabel="Ir a contacto"
+    buttonHref="/contacto"
+  />
+</Layout>

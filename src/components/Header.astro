@@ -1,0 +1,126 @@
+---
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/despacho', label: 'Despacho' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-neutral-border bg-primary/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-primary/90"
+  role="banner"
+>
+  <div class="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <a
+      href="/"
+      class="flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-white transition hover:opacity-95 focus-visible:outline-offset-4"
+      aria-label="Sevilegalia — Inicio, asesoría jurídica integral"
+    >
+      <img
+        src="/favicon.svg"
+        alt=""
+        width="44"
+        height="44"
+        class="h-10 w-10 shrink-0"
+        decoding="async"
+      />
+      <span class="flex flex-col leading-tight">
+        <span class="font-display text-xl font-bold text-white sm:text-2xl">Sevilegalia</span>
+        <span class="mt-0.5 text-xs font-normal text-slate-300">Asesoría jurídica integral</span>
+      </span>
+    </a>
+
+    <!-- Navegación escritorio -->
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Principal">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded px-3 py-2 text-sm font-medium transition',
+              currentPath === item.href
+                ? 'bg-white/10 text-white'
+                : 'text-slate-200 hover:bg-white/5 hover:text-white',
+            ]}
+            aria-current={currentPath === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Menú móvil (accesible: botón + panel) -->
+    <div class="relative md:hidden">
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded border border-white/20 p-2 text-white hover:bg-white/10"
+        aria-expanded="false"
+        aria-controls="menu-movil"
+        id="abrir-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">Abrir menú</span>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+      <div
+        id="menu-movil"
+        class="absolute left-0 right-0 top-full hidden border-b border-neutral-border bg-primary shadow-lg"
+        data-menu-panel
+        hidden
+      >
+        <nav class="flex flex-col px-4 py-3" aria-label="Principal móvil">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  'rounded px-3 py-3 text-base font-medium',
+                  currentPath === item.href ? 'bg-white/10 text-white' : 'text-slate-200 hover:bg-white/5',
+                ]}
+                aria-current={currentPath === item.href ? 'page' : undefined}
+                data-menu-link
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector('[data-menu-toggle]');
+  const panel = document.querySelector('[data-menu-panel]');
+  const links = document.querySelectorAll('[data-menu-link]');
+
+  function closeMenu() {
+    if (!panel || !btn) return;
+    panel.classList.add('hidden');
+    panel.setAttribute('hidden', '');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    if (!panel || !btn) return;
+    panel.classList.remove('hidden');
+    panel.removeAttribute('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    if (expanded) closeMenu();
+    else openMenu();
+  });
+
+  links.forEach((a) => a.addEventListener('click', closeMenu));
+</script>

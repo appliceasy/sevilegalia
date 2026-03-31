@@ -1,0 +1,79 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const meta = {
+  title: 'Política de cookies',
+  description:
+    'Información sobre el uso de cookies en el sitio web: tipos, finalidad y gestión. Sevilegalia.',
+};
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/legal/cookies">
+  <div class="border-b border-neutral-border bg-neutral-surface">
+    <div class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl font-bold text-primary">Política de cookies</h1>
+      <p class="mt-2 text-sm text-slate-500">
+        El sitio puede incorporar analítica web de forma opcional (configuración en el despliegue). Revise los apartados
+        siguientes.
+      </p>
+    </div>
+  </div>
+
+  <article class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
+    <div class="prose prose-slate max-w-3xl prose-headings:font-heading prose-h2:text-primary prose-a:text-accent">
+      <h2>1. ¿Qué son las cookies?</h2>
+      <p>
+        Las cookies son pequeños archivos que se almacenan en el dispositivo del usuario cuando visita un sitio web. Permiten
+        recordar preferencias, mantener sesiones o recopilar información estadística de forma agregada, según su tipo y
+        configuración.
+      </p>
+
+      <h2>2. Tipos de cookies que puede utilizar este sitio</h2>
+      <p>
+        <strong>Cookies técnicas (necesarias):</strong> permiten la navegación y el uso de funciones esenciales del sitio
+        (por ejemplo, recordar el idioma o el consentimiento mostrado). En un sitio estático sin panel de administración,
+        el uso de este tipo de cookies suele ser mínimo o inexistente salvo que el alojamiento o CDN las establezca por
+        motivos de seguridad o rendimiento.
+      </p>
+      <p>
+        <strong>Cookies analíticas / medición de audiencia:</strong> permiten conocer de forma agregada cuántas visitas
+        recibe el sitio, qué páginas se consultan y, en muchos casos, el país o tipo de dispositivo. <strong>No permiten
+        saber el nombre ni la identidad concreta de cada visitante</strong> salvo que usted facilite datos por otros medios
+        (por ejemplo, un formulario).
+      </p>
+      <p>
+        Si el titular activa <strong>Plausible Analytics</strong> (u otro proveedor similar orientado a la privacidad),
+        suele tratarse de mediciones con datos agregados o minimizados y, en muchos despliegues, <em>sin cookies de
+        seguimiento</em>. Consulte la documentación del proveedor elegido y, si procede, su panel de privacidad.
+      </p>
+      <p>
+        Si se utiliza <strong>Google Analytics 4</strong>, pueden emplearse cookies o identificadores que requieran
+        informar y, según el caso y la interpretación aplicable en la UE, obtener consentimiento previo mediante banner o
+        herramienta equivalente.
+      </p>
+      <p>
+        <strong>Cookies de personalización o publicidad:</strong> no están previstas en esta versión del sitio. Cualquier
+        cambio futuro se reflejará en esta política.
+      </p>
+
+      <h2>3. Base legal y conservación</h2>
+      <p>
+        Las cookies técnicas se basan en el interés legítimo de permitir el funcionamiento adecuado del sitio. Las no
+        esenciales requieren consentimiento. La duración depende de cada cookie (sesión o persistente); puede obtener más
+        detalle en la configuración del navegador o en la herramienta de gestión de cookies si se implementara.
+      </p>
+
+      <h2>4. Cómo gestionar o desactivar las cookies</h2>
+      <p>
+        Puede bloquear o eliminar cookies desde la configuración de su navegador (Chrome, Firefox, Safari, Edge, etc.).
+        Tenga en cuenta que desactivar cookies técnicas puede afectar al funcionamiento de algunas partes del sitio.
+      </p>
+
+      <h2>5. Actualizaciones</h2>
+      <p>
+        Esta política puede actualizarse para reflejar cambios legislativos o en el uso de cookies. Se recomienda revisarla
+        periódicamente. Para cualquier consulta: <a href="mailto:info@ejemplo-despacho.es">info@ejemplo-despacho.es</a>.
+      </p>
+    </div>
+  </article>
+</Layout>

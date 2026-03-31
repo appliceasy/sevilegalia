@@ -1,0 +1,104 @@
+---
+/**
+ * Formulario solo visual (sin envío).
+ * Integración futura: descomentar `action` y usar Formspree, Netlify Forms,
+ * Cloudflare Workers + Resend, o endpoint propio cuando exista backend.
+ */
+---
+
+<section class="rounded-lg border border-neutral-border bg-white p-6 shadow-card sm:p-8" aria-labelledby="formulario-contacto-titulo">
+  <h2 id="formulario-contacto-titulo" class="font-heading text-xl font-semibold text-primary">
+    Envíenos un mensaje
+  </h2>
+  <p class="mt-2 text-sm text-slate-600">
+    Complete el formulario y nos pondremos en contacto con usted. (Envío no activo en esta versión estática.)
+  </p>
+
+  <!--
+    INTEGRACIÓN FUTURA (ejemplos):
+    - Formspree: action="https://formspree.io/f/XXXX" method="POST"
+    - Netlify: data-netlify="true" name="contact"
+    - Añadir name a inputs y botón type="submit"
+  -->
+  <form
+    class="mt-8 space-y-6"
+    action="#"
+    method="post"
+    novalidate
+    aria-describedby="rgpd-aviso"
+    onsubmit="return false;"
+  >
+    <div>
+      <label for="nombre" class="block text-sm font-medium text-slate-700">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        autocomplete="name"
+        required
+        class="mt-1 w-full rounded border border-neutral-border px-4 py-2.5 text-slate-900 shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+      />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        required
+        class="mt-1 w-full rounded border border-neutral-border px-4 py-2.5 text-slate-900 shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+      />
+    </div>
+    <div>
+      <label for="telefono" class="block text-sm font-medium text-slate-700">Teléfono</label>
+      <input
+        type="tel"
+        id="telefono"
+        name="telefono"
+        autocomplete="tel"
+        class="mt-1 w-full rounded border border-neutral-border px-4 py-2.5 text-slate-900 shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+      />
+    </div>
+    <div>
+      <label for="mensaje" class="block text-sm font-medium text-slate-700">Mensaje</label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        rows={5}
+        required
+        class="mt-1 w-full rounded border border-neutral-border px-4 py-2.5 text-slate-900 shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+      ></textarea>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <input
+        type="checkbox"
+        id="privacidad"
+        name="privacidad"
+        required
+        class="mt-1 h-4 w-4 rounded border-neutral-border text-accent focus:ring-accent"
+      />
+      <label for="privacidad" class="text-sm text-slate-700">
+        Declaro haber leído y acepto la
+        <a href="/legal/privacidad" class="font-medium text-accent underline hover:text-accent-soft"
+          >Política de Privacidad</a
+        >.
+      </label>
+    </div>
+
+    <p id="rgpd-aviso" class="text-xs leading-relaxed text-slate-500">
+      Los datos personales facilitados serán tratados por el despacho con la finalidad de atender su solicitud, en base
+      al consentimiento del interesado. Puede ejercer sus derechos de acceso, rectificación, supresión y oposición
+      conforme a la normativa vigente.
+    </p>
+
+    <button
+      type="submit"
+      class="w-full rounded bg-accent px-6 py-3 font-heading text-sm font-semibold text-white transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-offset-2 sm:w-auto"
+      title="Versión estática: el envío no se procesa hasta integrar Formspree, Netlify Forms u otro servicio"
+    >
+      Enviar
+    </button>
+  </form>
+</section>
