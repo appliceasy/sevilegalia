@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { title, text, buttonLabel, buttonHref } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
 ---
 
 <section class="border-y border-neutral-border bg-neutral-surface" aria-labelledby="cta-titulo">
@@ -15,7 +18,7 @@ const { title, text, buttonLabel, buttonHref } = Astro.props;
     <p class="mx-auto mt-4 max-w-2xl text-slate-600">{text}</p>
     <div class="mt-8">
       <a
-        href={buttonHref}
+        href={withBase(buttonHref)}
         class="inline-flex items-center justify-center rounded border-2 border-primary bg-primary px-8 py-3 font-heading text-sm font-semibold text-white transition hover:bg-primary-muted focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         {buttonLabel}

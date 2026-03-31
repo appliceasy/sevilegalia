@@ -18,6 +18,11 @@ const {
   imageAlt,
   imageLoading = 'lazy',
 } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  path.startsWith('http://') || path.startsWith('https://')
+    ? path
+    : `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
 ---
 
 <section
@@ -33,7 +38,7 @@ const {
       <p class="mt-4 max-w-xl text-lg text-slate-300">{subtitle}</p>
       <div class="mt-8">
         <a
-          href={ctaHref}
+          href={withBase(ctaHref)}
           class="inline-flex items-center justify-center rounded bg-accent px-6 py-3 font-heading text-sm font-semibold text-white shadow-md transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-accent-highlight focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark"
         >
           {ctaLabel}

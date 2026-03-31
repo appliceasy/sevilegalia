@@ -41,7 +41,7 @@ const withBase = (path: string) =>
       {
         navItems.map((item) => (
           <a
-            href={item.href}
+            href={withBase(item.href)}
             class:list={[
               'rounded px-3 py-2 text-sm font-medium transition',
               currentPath === item.href
@@ -82,7 +82,7 @@ const withBase = (path: string) =>
           {
             navItems.map((item) => (
               <a
-                href={item.href}
+                href={withBase(item.href)}
                 class:list={[
                   'rounded px-3 py-3 text-base font-medium',
                   currentPath === item.href ? 'bg-white/10 text-white' : 'text-slate-200 hover:bg-white/5',

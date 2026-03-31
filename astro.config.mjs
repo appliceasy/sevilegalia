@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const [githubOwner = '', githubRepo = ''] = (process.env.GITHUB_REPOSITORY ?? '').split('/');
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
 const isUserPagesRepo = githubRepo.toLowerCase() === `${githubOwner.toLowerCase()}.github.io`;
+const repoBase = githubRepo ? `/${githubRepo}/` : '/';
 
 const site =
   process.env.SITE_URL ||
@@ -14,7 +15,7 @@ const site =
 
 const base =
   process.env.BASE_PATH ||
-  (isGitHubActions && githubRepo && !isUserPagesRepo ? `/${githubRepo}` : '/');
+  (isGitHubActions && githubRepo && !isUserPagesRepo ? repoBase : '/');
 
 /**
  * Configuración de Astro para sitio estático (sin servidor).
