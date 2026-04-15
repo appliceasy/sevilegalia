@@ -1,177 +1,261 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import PageHeroSplit from '@/components/PageHeroSplit.astro';
+import CTASection from '@/components/CTASection.astro';
 
 const meta = {
   title: 'Servicios',
   description:
     'Servicios jurídicos personalizados: civil, laboral, segunda oportunidad, Plan Tranquilidad, penal y compliance, extranjería y más. SeviLegalia.',
 };
+
 const baseUrl = import.meta.env.BASE_URL;
 const withBase = (path: string) =>
   `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+
+/** Enlaces rápidos (anclas) — mismo orden que los bloques */
+const enlacesRapidos = [
+  { href: '#civil', label: 'Civil' },
+  { href: '#laboral', label: 'Laboral' },
+  { href: '#segunda-oportunidad', label: '2.ª oportunidad' },
+  { href: '#plan-tranquilidad', label: 'Plan Tranquilidad' },
+  { href: '#penal', label: 'Penal' },
+  { href: '#otros', label: 'Otros' },
+];
+
+type ItemLinea = { titulo: string; texto: string };
+
+type BloqueServicio = {
+  id: string;
+  titulo: string;
+  intro?: string;
+  items: ItemLinea[];
+};
+
+const bloques: BloqueServicio[] = [
+  {
+    id: 'civil',
+    titulo: 'Derecho civil y propiedad',
+    items: [
+      {
+        titulo: 'Defensa ante la banca',
+        texto: 'Revisión y reclamación de cláusulas abusivas en hipotecas, gastos y tarjetas revolving.',
+      },
+      {
+        titulo: 'Herencias y sucesiones',
+        texto: 'Gestión integral y sensible de sucesiones y herencias.',
+      },
+      {
+        titulo: 'Inmobiliario y urbanístico',
+        texto: 'Propiedad horizontal, conflictos vecinales y vicios ocultos.',
+      },
+      {
+        titulo: 'Divorcios',
+        texto: 'Acompañamiento profesional en procesos de ruptura familiar.',
+      },
+    ],
+  },
+  {
+    id: 'laboral',
+    titulo: 'Derecho laboral',
+    items: [
+      {
+        titulo: 'Despidos y extinciones',
+        texto: 'Asesoramiento y representación en procedimientos de despido.',
+      },
+      {
+        titulo: 'Reclamación de cantidad',
+        texto: 'Recuperación de salarios e indemnizaciones pendientes.',
+      },
+      {
+        titulo: 'Nóminas y contratos',
+        texto: 'Análisis para que tu documentación laboral cumpla la ley.',
+      },
+    ],
+  },
+  {
+    id: 'segunda-oportunidad',
+    titulo: 'Ley de la segunda oportunidad',
+    items: [
+      {
+        titulo: 'Procesos concursales',
+        texto: 'Concursos con y sin masa para particulares, autónomos y sociedades.',
+      },
+      {
+        titulo: 'Planes y exoneración',
+        texto: 'Planes de pago para proteger activos o EPI para cancelar deudas cuando proceda.',
+      },
+      {
+        titulo: 'Gestión integral',
+        texto: 'Defensa en cada fase del procedimiento para un nuevo comienzo financiero.',
+      },
+    ],
+  },
+  {
+    id: 'plan-tranquilidad',
+    titulo: 'Plan Tranquilidad',
+    items: [
+      {
+        titulo: 'Cuota mensual',
+        texto: 'Protección jurídica continua desde 25€/mes.',
+      },
+      {
+        titulo: 'Consultas',
+        texto: 'Cobertura de dudas jurídicas del día a día.',
+      },
+      {
+        titulo: 'Contratos',
+        texto: 'Revisión preventiva de documentos antes de firmar.',
+      },
+    ],
+  },
+  {
+    id: 'penal',
+    titulo: 'Derecho penal y compliance socioeconómico',
+    intro:
+      'Defensa técnica en delitos patrimoniales y del ámbito empresarial, con foco en libertad, honor y derecho penal económico.',
+    items: [
+      {
+        titulo: 'Delitos socioeconómicos',
+        texto: 'Estafas, apropiaciones indebidas, administración desleal y delitos contra el patrimonio.',
+      },
+      {
+        titulo: 'Penal de empresa',
+        texto: 'Insolvencias punibles, Hacienda y Seguridad Social, y delitos contra los trabajadores.',
+      },
+      {
+        titulo: 'Personas jurídicas',
+        texto: 'Prevención de riesgos penales para empresas y directivos.',
+      },
+      {
+        titulo: 'Defensa en proceso',
+        texto: 'Asistencia al detenido e intervención desde la instrucción hasta el juicio oral.',
+      },
+    ],
+  },
+  {
+    id: 'otros',
+    titulo: 'Otros servicios especializados',
+    items: [
+      {
+        titulo: 'Extranjería',
+        texto: 'Residencia, nacionalidad y renovaciones.',
+      },
+      {
+        titulo: 'Brecha de género',
+        texto: 'Complemento de paternidad en pensiones.',
+      },
+      {
+        titulo: 'Fiscal y contable',
+        texto: 'Apoyo al cumplimiento tributario de autónomos y pymes.',
+      },
+    ],
+  },
+];
 ---
 
 <Layout title={meta.title} description={meta.description} canonicalPath="/servicios/">
-  <div class="border-b border-neutral-border bg-neutral-surface">
-    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
-      <h1 class="font-display text-4xl font-bold text-primary">Servicios</h1>
-      <p class="mt-4 max-w-3xl font-heading text-xl font-semibold tracking-tight text-slate-700 sm:text-2xl">
-        Prácticas habituales, trato a medida
-      </p>
-      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-        Aquí tienes un mapa de lo que solemos hacer. Si tu asunto no encaja en una casilla, igualmente
-        cuéntanoslo: la primera consulta es gratuita y te diremos si podemos ayudarte y cómo.
-      </p>
+  <PageHeroSplit
+    imageSrc={withBase('/Servicios.png')}
+    imageAlt="Escritorio jurídico con documentación, carpetas y herramientas de trabajo del despacho"
+  >
+    <p class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base sm:tracking-[0.2em]">
+      Lo que hacemos por ti
+    </p>
+    <h1 class="mt-3 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">Servicios</h1>
+    <p class="mt-5 font-heading text-xl font-semibold leading-snug text-slate-700 sm:text-2xl">
+      Prácticas habituales, trato a medida
+    </p>
+    <p class="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+      Aquí tienes un mapa claro de lo que solemos hacer. Si tu caso no encaja en una casilla, igualmente háblanos: la
+      <strong class="font-semibold text-primary">primera consulta es gratuita</strong> y te diremos si podemos ayudarte y
+      cómo.
+    </p>
+  </PageHeroSplit>
+
+  <!-- Navegación rápida (scroll horizontal en móvil; sin sticky para no solaparse con la cabecera) -->
+  <div class="border-b border-neutral-border bg-gradient-to-r from-neutral-surface/90 to-white/90">
+    <div class="mx-auto max-w-content px-4 py-3 sm:px-6 lg:px-8">
+      <p class="mb-2 text-xs font-medium uppercase tracking-wider text-slate-500">Ir al área</p>
+      <nav class="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Secciones de servicios">
+        {
+          enlacesRapidos.map((e) => (
+            <a
+              href={e.href}
+              class="shrink-0 rounded-full border border-neutral-border bg-neutral-surface px-4 py-2 text-sm font-semibold text-primary shadow-sm transition hover:border-accent/40 hover:bg-white hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {e.label}
+            </a>
+          ))
+        }
+      </nav>
     </div>
   </div>
 
-  <div class="mx-auto max-w-content space-y-14 px-4 py-16 sm:px-6 lg:px-8">
-    <section class="scroll-mt-24" aria-labelledby="servicio-civil" id="civil">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="servicio-civil" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          Derecho civil y propiedad
-        </h2>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Defensa ante la banca:</strong> Revisión y reclamación de cláusulas abusivas
-            en préstamos hipotecarios, gastos y tarjetas revolving.
-          </li>
-          <li>
-            <strong class="text-slate-800">Herencias y sucesiones:</strong> Gestión integral y sensible de sucesiones y
-            herencias.
-          </li>
-          <li>
-            <strong class="text-slate-800">Derecho inmobiliario y urbanístico:</strong> Soluciones en propiedad
-            horizontal, conflictos vecinales y vicios ocultos.
-          </li>
-          <li>
-            <strong class="text-slate-800">Divorcios:</strong> Acompañamiento profesional en procesos de ruptura
-            familiar.
-          </li>
-        </ul>
-      </div>
-    </section>
+  <div class="mx-auto max-w-content space-y-6 px-4 py-10 sm:space-y-8 sm:px-6 sm:py-14 lg:px-8">
+    {
+      bloques.map((bloque, index) => (
+        <section
+          class:list={[
+            'reveal-section scroll-mt-36 rounded-2xl border p-6 shadow-card ring-1 transition duration-300 sm:p-8 lg:p-10',
+            index % 2 === 0
+              ? 'border-neutral-border bg-white ring-primary/[0.04]'
+              : 'border-neutral-border/80 bg-gradient-to-br from-neutral-surface to-white ring-primary/[0.06]',
+          ]}
+          data-reveal
+          aria-labelledby={`servicio-${bloque.id}`}
+          id={bloque.id}
+        >
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+            <div class="flex min-w-0 flex-1 gap-4">
+              <span
+                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-gradient text-sm font-bold text-white shadow-md sm:h-14 sm:w-14 sm:text-base"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div class="min-w-0">
+                <h2 id={`servicio-${bloque.id}`} class="font-display text-2xl font-bold leading-tight text-primary sm:text-3xl lg:text-[2rem]">
+                  {bloque.titulo}
+                </h2>
+                {bloque.intro && (
+                  <p class="mt-3 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">{bloque.intro}</p>
+                )}
+              </div>
+            </div>
+          </div>
 
-    <section class="scroll-mt-24" aria-labelledby="servicio-laboral" id="laboral">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="servicio-laboral" class="font-display text-2xl font-bold text-primary sm:text-3xl">Derecho laboral</h2>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Despidos y extinciones:</strong> Asesoramiento y representación en
-            procedimientos de despido.
-          </li>
-          <li>
-            <strong class="text-slate-800">Reclamación de cantidad:</strong> Recuperación de salarios e indemnizaciones
-            pendientes.
-          </li>
-          <li>
-            <strong class="text-slate-800">Revisión de nóminas y contratos:</strong> Análisis para garantizar que tu
-            documentación laboral cumple con la ley.
-          </li>
-        </ul>
-      </div>
-    </section>
+          <ul class="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-1 sm:gap-5 lg:grid-cols-2" role="list">
+            {bloque.items.map((item) => (
+              <li class="flex gap-3 rounded-xl border border-transparent bg-white/60 p-4 transition hover:border-accent/20 hover:bg-white hover:shadow-sm sm:p-5">
+                <span class="mt-0.5 shrink-0 text-accent" aria-hidden="true">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <span class="text-base leading-relaxed text-slate-700 sm:text-[1.05rem]">
+                  <strong class="font-semibold text-primary">{item.titulo}.</strong>{' '}
+                  {item.texto}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
 
-    <section class="scroll-mt-24" aria-labelledby="servicio-segunda-oportunidad" id="segunda-oportunidad">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="servicio-segunda-oportunidad" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          Ley de la segunda oportunidad (exoneración de deudas)
-        </h2>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Especialistas en procesos concursales:</strong> Gestionamos concursos con y sin
-            masa para personas físicas (particulares/autónomos) y mercantiles.
-          </li>
-          <li>
-            <strong class="text-slate-800">Soluciones a medida:</strong> Tramitación de planes de pagos para proteger
-            activos o solicitud del EPI (exoneración del pasivo insatisfecho) para la cancelación total de deudas.
-          </li>
-          <li>
-            <strong class="text-slate-800">Gestión integral:</strong> Te defendemos en cualquier fase del procedimiento
-            para que logres un nuevo comienzo financiero.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="scroll-mt-24" aria-labelledby="servicio-plan-tranquilidad" id="plan-tranquilidad">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="servicio-plan-tranquilidad" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          Plan Tranquilidad (suscripción)
-        </h2>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li><strong class="text-slate-800">Protección legal continua por 25€/mes.</strong></li>
-          <li>
-            <strong class="text-slate-800">Consultas ilimitadas:</strong> Resolución inmediata de dudas jurídicas para
-            tu día a día.
-          </li>
-          <li>
-            <strong class="text-slate-800">Revisión de contratos:</strong> Análisis preventivo de cualquier documento
-            antes de firmar.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="scroll-mt-24" aria-labelledby="servicio-penal" id="penal">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="servicio-penal" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          Derecho penal y compliance socioeconómico
-        </h2>
-        <p class="mt-4 leading-relaxed text-slate-600">
-          Ofrecemos una defensa técnica rigurosa y especializada en delitos que afectan al ámbito patrimonial y a la
-          actividad empresarial. Nos centramos en la protección de la libertad y el honor, con especial énfasis en el
-          derecho penal económico:
-        </p>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Delitos socioeconómicos:</strong> Defensa y acusación en procedimientos por
-            estafas, apropiaciones indebidas, administración desleal y delitos contra el patrimonio.
-          </li>
-          <li>
-            <strong class="text-slate-800">Derecho penal de la empresa:</strong> Asesoramiento especializado en
-            insolvencias punibles, delitos contra la Hacienda Pública y la Seguridad Social, y delitos contra los derechos
-            de los trabajadores.
-          </li>
-          <li>
-            <strong class="text-slate-800">Responsabilidad penal de las personas jurídicas:</strong> Ayudamos a empresas y
-            directivos a prevenir riesgos penales derivados de su actividad mercantil.
-          </li>
-          <li>
-            <strong class="text-slate-800">Defensa general:</strong> Asistencia al detenido e intervención en todas las
-            fases del proceso penal, desde la instrucción hasta el juicio oral.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="scroll-mt-24" aria-labelledby="servicio-otros" id="otros">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="servicio-otros" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          Otros servicios especializados
-        </h2>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Extranjería:</strong> Permisos de residencia, nacionalidad y renovaciones.
-          </li>
-          <li>
-            <strong class="text-slate-800">Brecha de género:</strong> Reclamación del complemento de paternidad en
-            pensiones con alta tasa de éxito.
-          </li>
-          <li>
-            <strong class="text-slate-800">Asesoría fiscal y contable:</strong> Soporte especializado para el cumplimiento
-            tributario de autónomos y pymes.
-          </li>
-        </ul>
-        <div class="mt-10">
-          <a
-            href={withBase('/contacto/')}
-            class="inline-flex items-center justify-center rounded bg-accent px-6 py-3 font-heading text-sm font-semibold text-white transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-offset-2"
-          >
-            Contacta con nosotros
-          </a>
-        </div>
-      </div>
-    </section>
+  <div data-reveal class="reveal-section">
+    <CTASection
+      title="¿Tu caso no está en la lista?"
+      text="Cuéntanoslo igualmente: muchas consultas encajan en varias áreas. Te orientamos sin compromiso."
+      buttonLabel="Pedir primera consulta gratuita"
+      buttonHref="/contacto/"
+      prominent
+    />
   </div>
 </Layout>

@@ -1,115 +1,191 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import PageHeroSplit from '@/components/PageHeroSplit.astro';
+import CTASection from '@/components/CTASection.astro';
 
 const meta = {
   title: 'Sobre nosotros',
   description:
     'SeviLegalia: despacho multidisciplinar para particulares y empresas. Transparencia, inmediatez, enfoque preventivo y adaptabilidad.',
 };
+
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+
+const pasos = [
+  {
+    titulo: 'Transparencia y lenguaje claro',
+    texto:
+      'Para que tomes buenas decisiones, debes entender tu caso de principio a fin. Te hablamos de tú a tú, con honestidad sobre las posibilidades de éxito.',
+  },
+  {
+    titulo: 'Inmediatez y respuesta real',
+    texto:
+      'Gestión ágil y comunicación fluida. Tu caso no es un número de expediente: es la prioridad.',
+  },
+  {
+    titulo: 'Un enfoque preventivo',
+    texto:
+      'No solo resolvemos conflictos: los evitamos. Con el Plan Tranquilidad y el asesoramiento continuo blindamos contratos y decisiones.',
+  },
+  {
+    titulo: 'Adaptabilidad total',
+    texto:
+      'Reunión presencial en el despacho o gestión telemática: nos adaptamos a tu ritmo para que el trámite legal sea una facilidad, no una carga.',
+  },
+];
+
+const pilares = [
+  {
+    titulo: 'Protección proactiva',
+    texto:
+      'Asesoramiento preventivo que anticipa problemas y protege tus intereses antes de que escalen.',
+  },
+  {
+    titulo: 'Accesibilidad y confianza',
+    texto:
+      'Trato directo y lenguaje claro: tú recuperas el control sobre tus decisiones legales.',
+  },
+  {
+    titulo: 'Generación de valor',
+    texto:
+      'La abogacía como herramienta para mejorar tu vida y tu negocio: consultas que se convierten en soluciones.',
+  },
+];
 ---
 
 <Layout title={meta.title} description={meta.description} canonicalPath="/sobre-nosotros/">
-  <div class="border-b border-neutral-border bg-neutral-surface">
-    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
-      <h1 class="font-display text-4xl font-bold text-primary">Sobre nosotros</h1>
-      <p class="mt-4 max-w-3xl font-display text-2xl font-bold text-primary sm:text-3xl">
-        Un aliado legal para particulares y empresas
+  <PageHeroSplit
+    imageSrc={withBase('/Sobre_nosotros.png')}
+    imageAlt="Equipo de SeviLegalia en reunión profesional alrededor de la mesa de trabajo"
+  >
+    <p
+      class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base sm:tracking-[0.2em]"
+    >
+      Despacho en Sevilla
+    </p>
+    <h1 class="mt-3 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">
+      Sobre nosotros
+    </h1>
+    <p class="mt-5 font-heading text-xl font-semibold leading-snug text-slate-700 sm:text-2xl">
+      Un aliado legal para particulares y empresas
+    </p>
+    <div class="mt-8 space-y-5 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">
+      <p>
+        SeviLegalia es un despacho multidisciplinar pensado para dar una respuesta integral a las necesidades jurídicas
+        actuales. Trabajamos con la misma dedicación para quienes quieren proteger patrimonio y derechos, y para
+        empresas, autónomos y pymes que necesitan un respaldo solvente en el día a día.
       </p>
-      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-        SeviLegalia es un despacho multidisciplinar diseñado para ofrecer una respuesta integral a las necesidades
-        jurídicas de hoy. Estamos acostumbrados a trabajar con la misma dedicación tanto para particulares que buscan
-        proteger su patrimonio y derechos, como para entidades, autónomos y pymes que necesitan un respaldo legal solvente
-        para su actividad diaria.
-      </p>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
-        Con más de década de experiencia en el sector, hemos evolucionado para ofrecer una abogacía moderna, donde la
-        tecnología y el trato humano se dan la mano para proteger lo que más te importa: nuestros clientes.
+      <p>
+        Con más de una década de experiencia, combinamos criterio técnico, herramientas actuales y trato humano para
+        proteger lo que más importa: nuestros clientes.
       </p>
     </div>
-  </div>
+  </PageHeroSplit>
 
-  <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="forma-trabajar-titulo">
-    <h2 id="forma-trabajar-titulo" class="text-balance font-display text-2xl font-bold text-primary">
-      Cómo trabajamos
-    </h2>
-    <ol class="mt-10 space-y-10 text-slate-600">
-      <li class="flex gap-4">
-        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">1.</span>
-        <div>
-          <h3 class="font-heading text-lg font-semibold text-primary">Transparencia y lenguaje claro</h3>
-          <p class="mt-2 leading-relaxed">
-            Creemos que para que tomes las mejores decisiones, debes entender tu caso de principio a fin. Por eso,
-            eliminamos las barreras del lenguaje jurídico complejo y te hablamos de tú a tú, con total honestidad sobre las
-            posibilidades de éxito de tu proceso.
-          </p>
-        </div>
-      </li>
-      <li class="flex gap-4">
-        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">2.</span>
-        <div>
-          <h3 class="font-heading text-lg font-semibold text-primary">Inmediatez y respuesta real</h3>
-          <p class="mt-2 leading-relaxed">
-            Sabemos que los tiempos de la justicia no siempre coinciden con tus necesidades. Por ello, apostamos por una
-            gestión ágil y una comunicación fluida. En SeviLegalia, tu caso no es un número de expediente; es nuestra
-            prioridad absoluta.
-          </p>
-        </div>
-      </li>
-      <li class="flex gap-4">
-        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">3.</span>
-        <div>
-          <h3 class="font-heading text-lg font-semibold text-primary">Un enfoque preventivo</h3>
-          <p class="mt-2 leading-relaxed">
-            Nuestro objetivo no es solo ganar pleitos, sino evitarlos. A través de servicios como nuestro Plan
-            Tranquilidad, trabajamos de manera proactiva para blindar tus contratos y decisiones diarias, ahorrándote
-            costes y preocupaciones a largo plazo.
-          </p>
-        </div>
-      </li>
-      <li class="flex gap-4">
-        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">4.</span>
-        <div>
-          <h3 class="font-heading text-lg font-semibold text-primary">Adaptabilidad total</h3>
-          <p class="mt-2 leading-relaxed">
-            Nos movemos contigo. Tanto si prefieres una reunión presencial en nuestro despacho como si necesitas una
-            gestión totalmente telemática, nos adaptamos a tu ritmo de vida para que la asistencia legal sea una facilidad,
-            nunca una carga.
-          </p>
-        </div>
-      </li>
-    </ol>
+  <section
+    class="reveal-section relative overflow-hidden bg-gradient-to-b from-primary/[0.07] via-white to-neutral-surface"
+    data-reveal
+    aria-labelledby="forma-trabajar-titulo"
+  >
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/25 to-transparent"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base">Nuestro método</p>
+        <h2 id="forma-trabajar-titulo" class="mt-3 text-balance font-display text-4xl font-bold text-primary sm:text-5xl">
+          Cómo trabajamos
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Cuatro formas concretas en las que acompañamos a quien confía en el despacho.
+        </p>
+      </div>
+
+      <ol class="mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16" role="list">
+        {
+          pasos.map((paso, i) => (
+            <li
+              class="group relative flex flex-col rounded-2xl border border-neutral-border bg-white p-6 shadow-card ring-1 ring-primary/[0.06] transition duration-300 ease-smooth hover:-translate-y-0.5 hover:shadow-card-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8"
+              role="listitem"
+            >
+              <div class="flex items-start gap-4">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-gradient text-lg font-bold tabular-nums text-white shadow-md sm:h-16 sm:w-16 sm:text-xl"
+                  aria-hidden="true"
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div class="min-w-0 flex-1">
+                  <h3 class="font-display text-xl font-bold leading-snug text-primary sm:text-2xl">{paso.titulo}</h3>
+                  <p class="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">{paso.texto}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
   </section>
 
-  <section class="bg-neutral-surface py-16" aria-labelledby="mision-titulo">
+  <section class="border-t border-neutral-border bg-neutral-surface py-16 sm:py-20" aria-labelledby="mision-titulo">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
-      <h2 id="mision-titulo" class="font-display text-2xl font-bold text-primary">Nuestra misión</h2>
-      <p class="mt-6 max-w-3xl leading-relaxed text-slate-600">
-        En SeviLegalia, nuestra misión trasciende la mera prestación de servicios jurídicos; trabajamos para ser el
-        respaldo estratégico que permite a particulares y empresas operar con absoluta seguridad legal. Nos define un
-        compromiso innegociable con la excelencia y la inmediatez, integrando la asistencia legal en el día a día de
-        nuestros clientes para que la justicia sea siempre una solución y nunca una barrera.
-      </p>
-      <p class="mt-4 max-w-3xl font-heading font-semibold text-primary">Nuestra labor se fundamenta en tres pilares esenciales:</p>
-      <ul class="mt-6 max-w-3xl list-disc space-y-3 pl-5 text-slate-600">
-        <li>
-          <strong class="text-slate-800">Protección proactiva:</strong> No solo resolvemos conflictos, sino que los
-          prevenimos a través de un asesoramiento preventivo que blinda los intereses de quienes confían en nosotros.
-        </li>
-        <li>
-          <strong class="text-slate-800">Accesibilidad y confianza:</strong> Eliminamos la distancia entre el abogado y el
-          ciudadano, ofreciendo un trato directo y un lenguaje claro que devuelve al cliente el control sobre sus
-          decisiones legales.
-        </li>
-        <li>
-          <strong class="text-slate-800">Generación de valor:</strong> Entendemos la abogacía como una herramienta para
-          optimizar la vida y los negocios de nuestros clientes, transformando sus consultas en soluciones rentables y
-          seguras.
-        </li>
-      </ul>
-      <p class="mt-8 max-w-3xl leading-relaxed text-slate-600">
-        En definitiva, existimos para estar a tu lado, aplicando nuestros más de 10 años de experiencia para garantizar
-        que, ante cualquier reto legal, nunca te sientas solo.
-      </p>
+      <div class="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left">
+        <p class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base">Compromiso</p>
+        <h2 id="mision-titulo" class="mt-3 text-balance font-display text-4xl font-bold text-primary sm:text-5xl">
+          Nuestra misión
+        </h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-xl lg:mx-0">
+          Ir más allá del servicio jurídico puntual: ser el respaldo estratégico que permite a personas y empresas operar
+          con seguridad legal, con excelencia e inmediatez.
+        </p>
+      </div>
+
+      <div
+        class="relative mt-12 overflow-hidden rounded-2xl border border-neutral-border bg-white p-8 shadow-card sm:p-10 lg:mt-14"
+      >
+        <div
+          class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/10 blur-3xl"
+          aria-hidden="true"
+        >
+        </div>
+        <p class="relative max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Integramos la asesoría en el día a día para que la justicia sea una solución accesible, no un obstáculo. Tres
+          pilares guían nuestro trabajo:
+        </p>
+
+        <ul class="relative mt-10 grid gap-5 md:grid-cols-3 md:gap-6" role="list">
+          {
+            pilares.map((p) => (
+              <li
+                class="rounded-xl border border-neutral-border bg-neutral-surface/80 p-6 transition hover:border-accent/30 hover:shadow-sm"
+              >
+                <span class="block h-1 w-10 rounded-full bg-brand-gradient" aria-hidden="true" />
+                <h3 class="mt-4 font-heading text-lg font-bold text-primary sm:text-xl">{p.titulo}</h3>
+                <p class="mt-3 text-base leading-relaxed text-slate-600">{p.texto}</p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="relative mt-10 max-w-3xl border-t border-neutral-border pt-8 text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Estamos a tu lado con más de 10 años de experiencia para que, ante cualquier reto legal, no te sientas solo.
+        </p>
+      </div>
     </div>
   </section>
+
+  <div data-reveal class="reveal-section">
+    <CTASection
+      title="¿Quieres conocernos mejor?"
+      text="Concertemos una primera conversación sin compromiso y vemos cómo podemos ayudarte."
+      buttonLabel="Contacta con nosotros"
+      buttonHref="/contacto/"
+      prominent
+    />
+  </div>
 </Layout>

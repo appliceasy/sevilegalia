@@ -22,6 +22,50 @@ const normalizedCanonicalPath =
   canonicalPath === '/' ? '/' : canonicalPath.endsWith('/') ? canonicalPath : `${canonicalPath}/`;
 const canonical = `${siteUrl}${normalizedCanonicalPath === '/' ? '' : normalizedCanonicalPath}` || undefined;
 const fullTitle = title.includes('|') ? title : `${title} | SeviLegalia`;
+
+const toAbsolute = (path: string) =>
+  siteUrl ? new URL(withBase(path), `${siteUrl}/`).href : '';
+const organizationId = toAbsolute('/') ? `${toAbsolute('/')}#organization` : '';
+const websiteId = toAbsolute('/') ? `${toAbsolute('/')}#website` : '';
+
+const siteWideDescription =
+  'Despacho jurídico en Sevilla: asesoramiento civil, laboral y fiscal para empresas y particulares. Más de 20 años de experiencia.';
+
+const structuredDataJson =
+  siteUrl &&
+  organizationId &&
+  JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'LegalService',
+        '@id': organizationId,
+        name: 'SeviLegalia',
+        legalName: 'SEVILEGALIA SOCIEDAD LIMITADA',
+        url: toAbsolute('/'),
+        logo: toAbsolute('/Icono_justicia_balanza.png'),
+        email: 'info@sevilegalia.com',
+        telephone: '+34955385458',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'C. Progreso, 20, 2ºA',
+          addressLocality: 'Sevilla',
+          postalCode: '41013',
+          addressCountry: 'ES',
+        },
+        areaServed: { '@type': 'City', name: 'Sevilla' },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        url: toAbsolute('/'),
+        name: 'SeviLegalia',
+        description: siteWideDescription,
+        inLanguage: 'es-ES',
+        publisher: { '@id': organizationId },
+      },
+    ],
+  });
 ---
 
 <!doctype html>
@@ -36,6 +80,7 @@ const fullTitle = title.includes('|') ? title : `${title} | SeviLegalia`;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
+    {siteUrl && <link rel="alternate" type="text/plain" title="Contexto para IA (llms.txt)" href={toAbsolute('/llms.txt')} />}
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
@@ -44,6 +89,11 @@ const fullTitle = title.includes('|') ? title : `${title} | SeviLegalia`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    {
+      structuredDataJson && (
+        <script type="application/ld+json" set:html={structuredDataJson} />
+      )
+    }
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

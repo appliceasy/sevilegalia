@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import PageHeroSplit from '@/components/PageHeroSplit.astro';
 
 const meta = {
   title: '¿Y si colaboramos?',
@@ -10,117 +11,222 @@ const meta = {
 const baseUrl = import.meta.env.BASE_URL;
 const withBase = (path: string) =>
   `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+
+const enlacesRapidos = [
+  { href: '#bpo', label: 'BPO legal' },
+  { href: '#territorio', label: 'Territorio' },
+  { href: '#iguales', label: 'Iguales' },
+  { href: '#contacto-colaboracion', label: 'Siguiente paso' },
+];
+
+type ItemLinea = { titulo: string; texto: string };
+
+type BloqueColab = {
+  id: string;
+  titulo: string;
+  subtitulo?: string;
+  intro: string;
+  items: ItemLinea[];
+};
+
+const bloques: BloqueColab[] = [
+  {
+    id: 'bpo',
+    titulo: 'Externalización jurídica',
+    subtitulo: 'BPO legal',
+    intro:
+      'Soporte técnico a nivel estatal para la gestión de procedimientos judiciales, alineado con los estándares de calidad de cada firma.',
+    items: [
+      {
+        titulo: 'Gestión de carteras',
+        texto: 'Demandas, contestaciones y seguimiento procesal integral en procedimientos bancarios y civiles.',
+      },
+      {
+        titulo: 'Litigación masiva',
+        texto: 'Capacidad operativa para paquetes de demandas en volumen, con rigor técnico.',
+      },
+      {
+        titulo: 'Extranjería para colectivos',
+        texto: 'Tramitación masiva de nacionalidad y permisos de residencia para entidades y colaboradores.',
+      },
+      {
+        titulo: 'Asuntos pormenorizados',
+        texto: 'Expedientes que exigen estudio técnico exhaustivo fuera de los flujos estándar.',
+      },
+    ],
+  },
+  {
+    id: 'territorio',
+    titulo: 'Presencia en el territorio',
+    subtitulo: 'Sevilla, Huelva y Cádiz',
+    intro:
+      'Referencia presencial cuando la actuación en sala o en mesa es clave. Cubrimos lo que exige presencia física y conocimiento del foro.',
+    items: [
+      {
+        titulo: 'Sustitución en vistas',
+        texto: 'Vistas, audiencias previas y juicios con solvencia y conocimiento local.',
+      },
+      {
+        titulo: 'Apoderamiento bancario',
+        texto: 'Actuación como apoderados en firmas de préstamos, compraventas, lanzamientos y subastas.',
+      },
+      {
+        titulo: 'Comités y negociación',
+        texto: 'Mesas de negociación, comités de crisis y juntas de acreedores con defensa firme de su postura.',
+      },
+    ],
+  },
+  {
+    id: 'iguales',
+    titulo: 'Iguales para pymes',
+    subtitulo: 'Departamento legal externalizado',
+    intro:
+      'Para empresas que quieren una gestión jurídica integral: un modelo de iguala con cuota fija, como tener un departamento legal interno sin ampliar plantilla.',
+    items: [
+      {
+        titulo: 'Cuota previsible',
+        texto: 'Coste fijo mensual acordado según alcance y volumen.',
+      },
+      {
+        titulo: 'Cobertura amplia',
+        texto: 'Desde el asesoramiento del día a día hasta la defensa judicial cuando haga falta.',
+      },
+      {
+        titulo: 'Un solo interlocutor',
+        texto: 'Coordinación con su equipo para integrar el legal en la operativa real del negocio.',
+      },
+    ],
+  },
+];
 ---
 
 <Layout title={meta.title} description={meta.description} canonicalPath="/colaboramos/">
-  <div class="border-b border-neutral-border bg-neutral-surface">
-    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
-      <h1 class="font-display text-4xl font-bold text-primary">¿Y si colaboramos?</h1>
-      <p class="mt-4 max-w-3xl font-display text-xl font-bold text-primary sm:text-2xl">
-        Tu socio legal en el sur: solvencia, rigor y presencia
+  <PageHeroSplit
+    imageSrc={withBase('/colaboramos.png')}
+    imageAlt="Acuerdo profesional: apretón de manos y firma de documentos entre partners"
+  >
+    <p class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base sm:tracking-[0.2em]">
+      Partners y despachos
+    </p>
+    <h1 class="mt-3 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">
+      ¿Y si colaboramos?
+    </h1>
+    <p class="mt-5 font-heading text-xl font-semibold leading-snug text-slate-700 sm:text-2xl">
+      Tu socio legal en el sur: solvencia, rigor y presencia
+    </p>
+    <div class="mt-8 space-y-5 text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed">
+      <p>
+        En SeviLegalia generamos alianzas de alto valor: actuamos como brazo jurídico y operativo para entidades
+        bancarias, fondos y despachos nacionales que necesitan respuesta ágil, técnica y presencial en{' '}
+        <strong class="font-semibold text-primary">Andalucía Occidental</strong>.
       </p>
-      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-        En SeviLegalia somos expertos en generar alianzas de alto valor. Actuamos como el brazo jurídico y operativo de
-        entidades bancarias, fondos de inversión y despachos de ámbito nacional que requieren una respuesta ágil, técnica
-        y presencial en Andalucía Occidental.
+      <p>
+        Nuestra red de colaboradores y el equipo interno aseguran ejecución impecable, desde grandes volúmenes hasta
+        representación personalizada.
       </p>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
-        Nuestra red de colaboradores y nuestro equipo interno garantizan una ejecución impecable en cada procedimiento,
-        desde la gestión de grandes volúmenes hasta la representación personalizada.
-      </p>
+    </div>
+  </PageHeroSplit>
+
+  <div class="border-b border-neutral-border bg-gradient-to-r from-primary/[0.06] to-neutral-surface/90">
+    <div class="mx-auto max-w-content px-4 py-3 sm:px-6 lg:px-8">
+      <p class="mb-2 text-xs font-medium uppercase tracking-wider text-slate-500">Saltar a</p>
+      <nav
+        class="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Secciones de colaboración"
+      >
+        {
+          enlacesRapidos.map((e) => (
+            <a
+              href={e.href}
+              class="shrink-0 rounded-full border border-neutral-border bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm transition hover:border-accent/40 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {e.label}
+            </a>
+          ))
+        }
+      </nav>
     </div>
   </div>
 
-  <div class="mx-auto max-w-content space-y-14 px-4 py-16 sm:px-6 lg:px-8">
-    <section class="scroll-mt-24" aria-labelledby="colab-bpo" id="bpo">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="colab-bpo" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          1. Externalización jurídica (BPO legal)
-        </h2>
-        <p class="mt-4 leading-relaxed text-slate-600">
-          Ofrecemos soporte técnico a nivel estatal para la gestión de procedimientos judiciales, adaptándonos a los
-          estándares de calidad de cada firma:
-        </p>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Gestión de carteras:</strong> Redacción de demandas, contestaciones y seguimiento
-            procesal integral en procedimientos bancarios y civiles.
-          </li>
-          <li>
-            <strong class="text-slate-800">Litigación masiva:</strong> Capacidad operativa para gestionar paquetes de
-            demandas en volumen con rigor técnico.
-          </li>
-          <li>
-            <strong class="text-slate-800">Extranjería para colectivos:</strong> Gestión masiva de solicitudes de
-            nacionalidad y permisos de residencia para entidades y colaboradores.
-          </li>
-          <li>
-            <strong class="text-slate-800">Asuntos pormenorizados:</strong> Atención detallada a expedientes judiciales
-            particulares que requieren un estudio técnico exhaustivo fuera de los procesos estándar.
-          </li>
-        </ul>
-      </div>
-    </section>
+  <div class="mx-auto max-w-content space-y-6 px-4 py-10 sm:space-y-8 sm:px-6 sm:py-14 lg:px-8">
+    {
+      bloques.map((bloque, index) => (
+        <section
+          class:list={[
+            'reveal-section scroll-mt-36 rounded-2xl border p-6 shadow-card ring-1 transition duration-300 sm:p-8 lg:p-10',
+            index % 2 === 0
+              ? 'border-neutral-border bg-white ring-primary/[0.04]'
+              : 'border-neutral-border/80 bg-gradient-to-br from-neutral-surface to-white ring-primary/[0.06]',
+          ]}
+          data-reveal
+          aria-labelledby={`colab-${bloque.id}`}
+          id={bloque.id}
+        >
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
+            <span
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-gradient text-sm font-bold text-white shadow-md sm:h-14 sm:w-14 sm:text-base"
+              aria-hidden="true"
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="min-w-0 flex-1">
+              {bloque.subtitulo && (
+                <p class="font-heading text-sm font-semibold uppercase tracking-wide text-accent">{bloque.subtitulo}</p>
+              )}
+              <h2 id={`colab-${bloque.id}`} class="mt-1 font-display text-2xl font-bold text-primary sm:text-3xl lg:text-[2rem]">
+                {bloque.titulo}
+              </h2>
+              <p class="mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">{bloque.intro}</p>
+            </div>
+          </div>
 
-    <section class="scroll-mt-24" aria-labelledby="colab-territorio" id="territorio">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="colab-territorio" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          2. Presencia y representación en el territorio
-        </h2>
-        <p class="mt-4 leading-relaxed text-slate-600">
-          Somos la referencia presencial en las provincias de Sevilla, Huelva y Cádiz. Cubrimos todas las necesidades donde
-          la presencia física es determinante:
-        </p>
-        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
-          <li>
-            <strong class="text-slate-800">Sustitución en vistas:</strong> Representación en vistas, audiencias previas y
-            juicios con total solvencia y conocimiento del foro local.
-          </li>
-          <li>
-            <strong class="text-slate-800">Apoderamiento bancario:</strong> Actuamos como apoderados de entidades
-            financieras y fondos en firmas de préstamos, compraventas, lanzamientos y subastas.
-          </li>
-          <li>
-            <strong class="text-slate-800">Comités y mesas de negociación:</strong> Representamos los intereses de su
-            entidad en mesas de negociación, comités de crisis o juntas de acreedores, garantizando una defensa firme de su
-            postura.
-          </li>
-        </ul>
-      </div>
-    </section>
+          <ul class="mt-8 grid gap-4 sm:mt-10 lg:grid-cols-2" role="list">
+            {bloque.items.map((item) => (
+              <li class="flex gap-3 rounded-xl border border-transparent bg-white/70 p-4 transition hover:border-accent/25 hover:bg-white hover:shadow-sm sm:p-5">
+                <span class="mt-0.5 shrink-0 text-accent" aria-hidden="true">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <span class="text-base leading-relaxed text-slate-700 sm:text-[1.05rem]">
+                  <strong class="font-semibold text-primary">{item.titulo}.</strong> {item.texto}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
 
-    <section class="scroll-mt-24" aria-labelledby="colab-iguales" id="iguales">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="colab-iguales" class="font-display text-2xl font-bold text-primary sm:text-3xl">
-          3. Servicios de iguales para pymes
+    <section
+      class="reveal-section scroll-mt-36 rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.07] via-white to-neutral-surface p-6 shadow-card ring-1 ring-primary/10 sm:p-10"
+      data-reveal
+      aria-labelledby="colab-futuro"
+      id="contacto-colaboracion"
+    >
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-heading text-sm font-semibold uppercase tracking-[0.15em] text-accent">Siguiente paso</p>
+        <h2 id="colab-futuro" class="mt-3 text-balance font-display text-3xl font-bold text-primary sm:text-4xl">
+          ¿Hablamos de futuro?
         </h2>
-        <p class="mt-4 leading-relaxed text-slate-600">
-          Para aquellas empresas que buscan una gestión jurídica integral, ofrecemos un modelo de iguala de servicios,
-          permitiendo a la pyme contar con un departamento legal interno externalizado por una cuota fija, cubriendo desde
-          el asesoramiento diario hasta la defensa jurídica.
+        <p class="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+          No solo prestamos servicios: construimos alianzas basadas en eficiencia y confianza. Estamos abiertos a estudiar
+          propuestas adaptadas a su operativa, proyectos puntuales o grandes volúmenes.
         </p>
-      </div>
-    </section>
-
-    <section class="scroll-mt-24" aria-labelledby="colab-futuro" id="contacto-colaboracion">
-      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
-        <h2 id="colab-futuro" class="font-display text-2xl font-bold text-primary sm:text-3xl">¿Hablamos de futuro?</h2>
-        <p class="mt-4 font-heading text-lg font-semibold text-primary">Inicie su colaboración con SeviLegalia</p>
-        <p class="mt-4 leading-relaxed text-slate-600">
-          En SeviLegalia no solo ofrecemos servicios, construimos alianzas sólidas basadas en la eficiencia y la confianza
-          mutua. Estamos plenamente abiertos a estudiar nuevas propuestas de colaboración que se adapten a sus necesidades
-          operativas, ya sea para proyectos puntuales o para la gestión de grandes volúmenes de trabajo.
-        </p>
-        <p class="mt-4 leading-relaxed text-slate-600">
-          Si busca un partner jurídico con capacidad de respuesta inmediata y presencia real en el sur de España, queremos
-          conocer su propuesta.
+        <p class="mt-4 text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Si busca un partner jurídico con respuesta ágil y presencia real en el sur de España, queremos conocer su
+          propuesta.
         </p>
         <div class="mt-10">
           <a
             href={withBase('/contacto/')}
-            class="inline-flex items-center justify-center rounded bg-accent px-6 py-3 font-heading text-sm font-semibold text-white transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-offset-2"
+            class="inline-flex min-h-[3rem] items-center justify-center rounded-lg bg-accent px-8 py-3 font-heading text-base font-semibold text-white shadow-md transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:px-10 sm:text-lg"
           >
-            Contacta con nosotros
+            Iniciar conversación
           </a>
         </div>
       </div>
