@@ -1,0 +1,160 @@
+---
+/**
+ * Botón flotante de contacto (todas las páginas). En &lt;768px inicia minimizado.
+ */
+const telHref = 'tel:+34955385458';
+const telLabel = '955 385 458';
+const mailHref = 'mailto:info@sevilegalia.com';
+const mailLabel = 'info@sevilegalia.com';
+---
+
+<div
+  class="pointer-events-none fixed inset-x-0 bottom-0 z-[90] flex justify-end p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-5"
+  data-contact-widget
+  data-expanded="false"
+  aria-live="polite"
+>
+  <div class="pointer-events-auto flex w-full max-w-[min(100%,20rem)] flex-col items-end gap-2 sm:max-w-xs">
+    <div
+      id="contact-float-panel"
+      class="contact-float-panel hidden w-full overflow-hidden rounded-2xl border border-neutral-border bg-white text-left shadow-2xl ring-1 ring-primary/10"
+      role="dialog"
+      aria-labelledby="contact-float-title"
+      aria-modal="false"
+      aria-hidden="true"
+      data-contact-panel
+    >
+      <div class="flex items-start justify-between gap-2 border-b border-neutral-border bg-primary px-4 py-3 text-white">
+        <div>
+          <p id="contact-float-title" class="font-display text-lg font-bold">Contacto</p>
+          <p class="mt-0.5 text-xs text-slate-200">Primera consulta gratuita</p>
+        </div>
+        <button
+          type="button"
+          class="rounded-lg p-1.5 text-white/90 transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          aria-label="Minimizar panel de contacto"
+          data-contact-minimize
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+      <div class="space-y-4 px-4 py-4">
+        <a
+          href={telHref}
+          class="flex items-center gap-3 rounded-xl border border-neutral-border bg-neutral-surface px-3 py-3 text-primary transition hover:border-accent/40 hover:bg-white"
+        >
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+          </span>
+          <span>
+            <span class="block text-xs font-medium text-slate-500">Teléfono</span>
+            <span class="font-heading text-base font-semibold">{telLabel}</span>
+          </span>
+        </a>
+        <a
+          href={mailHref}
+          class="flex items-center gap-3 rounded-xl border border-neutral-border bg-neutral-surface px-3 py-3 text-primary transition hover:border-accent/40 hover:bg-white"
+        >
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </span>
+          <span class="min-w-0">
+            <span class="block text-xs font-medium text-slate-500">Email</span>
+            <span class="break-all font-heading text-sm font-semibold">{mailLabel}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      id="contact-float-fab"
+      class="contact-float-fab flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg transition hover:bg-primary-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-safe:transition-transform motion-safe:hover:scale-105"
+      aria-label="Abrir contacto rápido"
+      aria-expanded="false"
+      aria-controls="contact-float-panel"
+      data-contact-fab
+    >
+      <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  function initFloatingContact() {
+    const root = document.querySelector('[data-contact-widget]');
+    const panel = document.querySelector('[data-contact-panel]');
+    const fab = document.querySelector('[data-contact-fab]');
+    const btnMin = document.querySelector('[data-contact-minimize]');
+    if (!root || !panel || !fab) return;
+
+    if (window.location.pathname.includes('contacto')) {
+      root.style.display = 'none';
+      return;
+    }
+
+    const mq = window.matchMedia('(max-width: 767px)');
+    const setExpanded = (expanded) => {
+      root.setAttribute('data-expanded', expanded ? 'true' : 'false');
+      fab.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+      if (expanded) {
+        panel.classList.remove('hidden');
+        fab.classList.add('hidden');
+        fab.setAttribute('tabindex', '-1');
+      } else {
+        panel.classList.add('hidden');
+        fab.classList.remove('hidden');
+        fab.removeAttribute('tabindex');
+      }
+    };
+
+    setExpanded(!mq.matches);
+
+    fab.addEventListener('click', function () {
+      setExpanded(true);
+    });
+    if (btnMin) {
+      btnMin.addEventListener('click', function () {
+        setExpanded(false);
+      });
+    }
+
+    mq.addEventListener('change', function (e) {
+      setExpanded(!e.matches);
+    });
+  }
+
+  initFloatingContact();
+</script>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .contact-float-fab {
+      transition: none;
+    }
+  }
+</style>
