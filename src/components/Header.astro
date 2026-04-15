@@ -17,10 +17,10 @@ const withBase = (path: string) =>
   class="sticky top-0 z-50 border-b border-neutral-border bg-primary/95 shadow-sm backdrop-blur transition-[background-color,box-shadow] duration-300 ease-out supports-[backdrop-filter]:bg-primary/90"
   role="banner"
 >
-  <div class="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+  <div class="mx-auto flex max-w-content items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
     <a
       href={withBase('/')}
-      class="group flex items-center gap-2.5 transition hover:opacity-95 focus-visible:outline-offset-4 sm:gap-3"
+      class="group flex min-w-0 flex-1 items-center gap-2.5 transition hover:opacity-95 focus-visible:outline-offset-4 sm:gap-3 md:flex-none"
       aria-label="SeviLegalia — Inicio"
     >
       <img
@@ -40,7 +40,6 @@ const withBase = (path: string) =>
       </span>
     </a>
 
-    <!-- Navegación escritorio -->
     <nav class="hidden items-center gap-1 md:flex" aria-label="Principal">
       {
         navItems.map((item) => (
@@ -60,47 +59,55 @@ const withBase = (path: string) =>
       }
     </nav>
 
-    <!-- Menú móvil (accesible: botón + panel) -->
-    <div class="relative md:hidden">
+    <div class="shrink-0 md:hidden">
       <button
         type="button"
-        class="inline-flex items-center justify-center rounded border border-white/20 p-2 text-white hover:bg-white/10"
+        class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-white/25 bg-white/5 p-2 text-white active:bg-white/15"
         aria-expanded="false"
         aria-controls="menu-movil"
+        aria-label="Abrir menú de navegación"
         id="abrir-menu"
         data-menu-toggle
       >
-        <span class="sr-only">Abrir menú</span>
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
-          ></path>
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" aria-hidden="true" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
         </svg>
       </button>
-      <div
-        id="menu-movil"
-        class="absolute left-0 right-0 top-full hidden border-b border-neutral-border bg-primary shadow-lg"
-        data-menu-panel
-        hidden
-      >
-        <nav class="flex flex-col px-4 py-3" aria-label="Principal móvil">
-          {
-            navItems.map((item) => (
-              <a
-                href={withBase(item.href)}
-                class:list={[
-                  'rounded px-3 py-3 text-base font-medium',
-                  currentPath === item.href ? 'bg-white/10 text-white' : 'text-slate-200 hover:bg-white/5',
-                ]}
-                aria-current={currentPath === item.href ? 'page' : undefined}
-                data-menu-link
-              >
-                {item.label}
-              </a>
-            ))
-          }
-        </nav>
-      </div>
     </div>
+  </div>
+
+  <!-- Panel a ancho completo del viewport (hermano del flex, no dentro del bloque del botón) -->
+  <div
+    id="menu-movil"
+    class="menu-movil-panel absolute left-0 right-0 top-full z-[60] hidden max-h-[min(75dvh,calc(100dvh-3.5rem))] overflow-y-auto overscroll-contain border-b border-white/10 bg-primary shadow-xl md:hidden"
+    data-menu-panel
+    hidden
+  >
+    <nav
+      class="mx-auto flex max-w-content flex-col gap-0.5 px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6"
+      aria-label="Principal móvil"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={withBase(item.href)}
+            class:list={[
+              'flex min-h-[48px] items-center rounded-lg px-4 py-3 text-[1.05rem] font-medium leading-snug text-white',
+              currentPath === item.href ? 'bg-white/15' : 'active:bg-white/10',
+            ]}
+            aria-current={currentPath === item.href ? 'page' : undefined}
+            data-menu-link
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
   </div>
 </header>
 
@@ -109,11 +116,40 @@ const withBase = (path: string) =>
   const panel = document.querySelector('[data-menu-panel]');
   const links = document.querySelectorAll('[data-menu-link]');
 
+  function lockScroll(lock) {
+    const html = document.documentElement;
+    const body = document.body;
+    if (lock) {
+      const scrollY = window.scrollY;
+      body.dataset.scrollLockY = String(scrollY);
+      html.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.left = '0';
+      body.style.right = '0';
+      body.style.width = '100%';
+    } else {
+      const y = body.dataset.scrollLockY;
+      html.style.overflow = '';
+      body.style.overflow = '';
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      body.style.width = '';
+      delete body.dataset.scrollLockY;
+      if (y !== undefined) window.scrollTo(0, Number(y) || 0);
+    }
+  }
+
   function closeMenu() {
     if (!panel || !btn) return;
     panel.classList.add('hidden');
     panel.setAttribute('hidden', '');
     btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Abrir menú de navegación');
+    lockScroll(false);
   }
 
   function openMenu() {
@@ -121,6 +157,8 @@ const withBase = (path: string) =>
     panel.classList.remove('hidden');
     panel.removeAttribute('hidden');
     btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Cerrar menú de navegación');
+    lockScroll(true);
   }
 
   btn?.addEventListener('click', () => {
@@ -130,4 +168,21 @@ const withBase = (path: string) =>
   });
 
   links.forEach((a) => a.addEventListener('click', closeMenu));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 768px)').matches && btn?.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    }
+  });
 </script>
+
+<style>
+  /* Refuerzo iOS: capa táctil y scroll del panel */
+  .menu-movil-panel {
+    -webkit-overflow-scrolling: touch;
+  }
+</style>
