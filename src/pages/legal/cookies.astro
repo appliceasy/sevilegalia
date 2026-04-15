@@ -1,10 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+
 const meta = {
   title: 'Política de cookies',
   description:
-    'Información sobre el uso de cookies en el sitio web: tipos, finalidad y gestión. Sevilegalia.',
+    'Información sobre cookies en www.sevilegalia.com: tipos, finalidad, tabla de cookies y gestión en el navegador. SeviLegalia.',
 };
 ---
 
@@ -12,67 +16,315 @@ const meta = {
   <div class="border-b border-neutral-border bg-neutral-surface">
     <div class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
       <h1 class="font-display text-4xl font-bold text-primary">Política de cookies</h1>
-      <p class="mt-2 text-sm text-slate-500">
-        El sitio puede incorporar analítica web de forma opcional (configuración en el despliegue). Revise los apartados
-        siguientes.
-      </p>
+      <p class="mt-2 text-sm text-slate-500">Última actualización: 7 de abril de 2026.</p>
     </div>
   </div>
 
   <article class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
-    <div class="prose prose-slate max-w-3xl prose-headings:font-heading prose-h2:text-primary prose-a:text-accent">
-      <h2>1. ¿Qué son las cookies?</h2>
+    <div class="prose prose-slate max-w-none prose-headings:font-heading prose-h2:text-primary prose-a:text-accent lg:max-w-3xl">
       <p>
-        Las cookies son pequeños archivos que se almacenan en el dispositivo del usuario cuando visita un sitio web. Permiten
-        recordar preferencias, mantener sesiones o recopilar información estadística de forma agregada, según su tipo y
-        configuración.
+        El objetivo de esta política es informar a los interesados acerca de las cookies que emplea esta página web de
+        conformidad con lo establecido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y
+        de Comercio Electrónico, y el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de
+        2016.
       </p>
 
-      <h2>2. Tipos de cookies que puede utilizar este sitio</h2>
+      <h2>1. Uso de cookies. ¿Qué son las cookies?</h2>
       <p>
-        <strong>Cookies técnicas (necesarias):</strong> permiten la navegación y el uso de funciones esenciales del sitio
-        (por ejemplo, recordar el idioma o el consentimiento mostrado). En un sitio estático sin panel de administración,
-        el uso de este tipo de cookies suele ser mínimo o inexistente salvo que el alojamiento o CDN las establezca por
-        motivos de seguridad o rendimiento.
+        Las cookies son ficheros que se descargan en su ordenador, smartphone o tablet al acceder a determinadas páginas
+        web. La utilización de cookies ofrece numerosas ventajas en la prestación de servicios de la Sociedad de la
+        Información, puesto que, entre otras: (a) facilita la navegación del usuario en el sitio web; (b) facilita al
+        usuario el acceso a los diferentes servicios que ofrece el sitio web; (c) evita al usuario volver a configurar
+        características generales predefinidas cada vez que accede al sitio web; (d) favorece la mejora del funcionamiento
+        y de los servicios prestados a través del sitio web, tras el correspondiente análisis de la información obtenida
+        a través de las cookies instaladas; (e) permiten a un sitio web, entre otras cosas, almacenar y recuperar
+        información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que
+        contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.
       </p>
       <p>
-        <strong>Cookies analíticas / medición de audiencia:</strong> permiten conocer de forma agregada cuántas visitas
-        recibe el sitio, qué páginas se consultan y, en muchos casos, el país o tipo de dispositivo. <strong>No permiten
-        saber el nombre ni la identidad concreta de cada visitante</strong> salvo que usted facilite datos por otros medios
-        (por ejemplo, un formulario).
-      </p>
-      <p>
-        Si el titular activa <strong>Plausible Analytics</strong> (u otro proveedor similar orientado a la privacidad),
-        suele tratarse de mediciones con datos agregados o minimizados y, en muchos despliegues, <em>sin cookies de
-        seguimiento</em>. Consulte la documentación del proveedor elegido y, si procede, su panel de privacidad.
-      </p>
-      <p>
-        Si se utiliza <strong>Google Analytics 4</strong>, pueden emplearse cookies o identificadores que requieran
-        informar y, según el caso y la interpretación aplicable en la UE, obtener consentimiento previo mediante banner o
-        herramienta equivalente.
-      </p>
-      <p>
-        <strong>Cookies de personalización o publicidad:</strong> no están previstas en esta versión del sitio. Cualquier
-        cambio futuro se reflejará en esta política.
+        La mayoría de los navegadores aceptan como estándar las cookies y, con independencia de las mismas, permiten o
+        impiden en los ajustes de seguridad las cookies temporales o memorizadas. Ten en cuenta que para poder utilizar y
+        contar con una mejor experiencia de navegación, es necesario que tengas habilitadas las cookies, especialmente
+        aquellas de carácter técnico que resultan necesarias para que pueda identificarte como usuario registrado cada vez
+        que accedas a la presente web. En caso de no querer recibir cookies, por favor, configure su navegador de internet
+        para que las borre del disco duro de su ordenador, las bloquee o le avise en su caso de instalación de las mismas.
       </p>
 
-      <h2>3. Base legal y conservación</h2>
+      <h2>2. ¿Qué tipos de cookies utiliza esta página web?</h2>
       <p>
-        Las cookies técnicas se basan en el interés legítimo de permitir el funcionamiento adecuado del sitio. Las no
-        esenciales requieren consentimiento. La duración depende de cada cookie (sesión o persistente); puede obtener más
-        detalle en la configuración del navegador o en la herramienta de gestión de cookies si se implementara.
+        Con el fin de proporcionarle la máxima información posible, en primer lugar procedemos a realizar una
+        clasificación de las cookies, en función de una serie de categorías:
+      </p>
+      <p><strong>Tipos de cookies según la entidad que las gestiona:</strong></p>
+      <ul>
+        <li>
+          <strong>Cookies propias:</strong> son aquellas de las que es responsable el propio editor y que, generalmente, se
+          envían al equipo terminal del usuario desde un equipo o dominio gestionado por el propio editor y desde el que
+          se presta el servicio solicitado por el usuario.
+        </li>
+        <li>
+          <strong>Cookies de terceros:</strong> son aquellas de las que es responsable una entidad distinta del editor y
+          que, generalmente, se envían al equipo terminal del usuario desde un equipo o dominio que no es gestionado por el
+          editor, sino por otra entidad que trata los datos obtenidos a través de las cookies.
+        </li>
+      </ul>
+      <p><strong>Tipos de cookies según su finalidad:</strong></p>
+      <ul>
+        <li>
+          <strong>Cookies técnicas:</strong> son aquellas que permiten al usuario la navegación a través de una página web,
+          plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existen, incluyendo
+          aquellas que el editor utiliza para permitir la gestión y operativa de la página web y habilitar sus funciones y
+          servicios, como, por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión, acceder a
+          partes de acceso restringido, realizar el proceso de compra, almacenar contenidos, para la difusión de vídeos o
+          sonido, habilitar contenidos dinámicos, etc.
+        </li>
+        <li>
+          <strong>Cookies de preferencias o personalización:</strong> son aquellas que permiten recordar información para
+          que el usuario acceda al servicio con determinadas características que pueden diferenciar su experiencia de la de
+          otros usuarios, como, por ejemplo, el idioma, el número de resultados a mostrar cuando el usuario realiza una
+          búsqueda, etc.
+        </li>
+        <li>
+          <strong>Cookies de análisis o medición:</strong> son aquellas que permiten al responsable de las mismas el
+          seguimiento y análisis del comportamiento de los usuarios de los sitios web a los que están vinculadas, incluida
+          la cuantificación de los impactos de los anuncios.
+        </li>
+        <li>
+          <strong>Cookies de publicidad comportamental:</strong> son aquellas que almacenan información del comportamiento
+          de los usuarios obtenida a través de la observación continuada de sus hábitos de navegación, lo que permite
+          desarrollar un perfil específico para mostrar publicidad en función del mismo.
+        </li>
+      </ul>
+      <p><strong>Tipos de cookies según el plazo de tiempo que permanecen activadas:</strong></p>
+      <ul>
+        <li>
+          <strong>Cookies de sesión:</strong> son aquellas diseñadas para recabar y almacenar datos mientras el usuario
+          accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la
+          prestación del servicio solicitado por el usuario en una sola ocasión (por ejemplo, una lista de productos
+          adquiridos) y desaparecen al terminar la sesión.
+        </li>
+        <li>
+          <strong>Cookies persistentes:</strong> son aquellas en las que los datos siguen almacenados en el terminal y pueden
+          ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos
+          minutos a varios años.
+        </li>
+      </ul>
+      <p>A continuación, detallamos la lista de las cookies que utilizamos:</p>
+
+      <div class="not-prose -mx-4 max-w-[calc(100vw-2rem)] overflow-x-auto sm:mx-0 sm:max-w-none">
+        <table class="w-full min-w-[640px] border-collapse border border-slate-300 text-left text-sm">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="border border-slate-300 px-3 py-2 font-heading font-semibold text-primary">Nombre</th>
+              <th class="border border-slate-300 px-3 py-2 font-heading font-semibold text-primary">Tipo</th>
+              <th class="border border-slate-300 px-3 py-2 font-heading font-semibold text-primary">Proveedor</th>
+              <th class="border border-slate-300 px-3 py-2 font-heading font-semibold text-primary">Finalidad</th>
+              <th class="border border-slate-300 px-3 py-2 font-heading font-semibold text-primary">Duración</th>
+              <th class="border border-slate-300 px-3 py-2 font-heading font-semibold text-primary">Más info.</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-700">
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">_ga</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de analíticas</td>
+              <td class="border border-slate-300 px-3 py-2">Google Analytics</td>
+              <td class="border border-slate-300 px-3 py-2">Distinguir usuarios únicos y recopilar datos analíticos</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (2 años)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank"
+                  >Google</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">_gid</td>
+              <td class="border border-slate-300 px-3 py-2">Cookies de analíticas</td>
+              <td class="border border-slate-300 px-3 py-2">Google Analytics</td>
+              <td class="border border-slate-300 px-3 py-2">Distinguir usuarios durante una sesión y recopilar datos analíticos</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (24 horas)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank"
+                  >Google</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">_gat</td>
+              <td class="border border-slate-300 px-3 py-2">Cookies de analíticas</td>
+              <td class="border border-slate-300 px-3 py-2">Google Analytics</td>
+              <td class="border border-slate-300 px-3 py-2">Limitar la velocidad de solicitudes y la recopilación de datos</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (24 horas)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank"
+                  >Google</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">PHPSESSID</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de sesión</td>
+              <td class="border border-slate-300 px-3 py-2">Web</td>
+              <td class="border border-slate-300 px-3 py-2">Almacenar la identificación de sesión del usuario en el sitio</td>
+              <td class="border border-slate-300 px-3 py-2">Sesión</td>
+              <td class="border border-slate-300 px-3 py-2">—</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">Auth_token</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de preferencias</td>
+              <td class="border border-slate-300 px-3 py-2">Web</td>
+              <td class="border border-slate-300 px-3 py-2">Almacenar un token de autenticación para recordar la sesión del usuario</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (variable)</td>
+              <td class="border border-slate-300 px-3 py-2">—</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">C_user</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de redes sociales</td>
+              <td class="border border-slate-300 px-3 py-2">Facebook</td>
+              <td class="border border-slate-300 px-3 py-2">Autenticar al usuario y mantener su sesión activa en Facebook</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (1 año)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://www.facebook.com/privacy/policy/?entry_point=facebook_page_footer" rel="noopener noreferrer" target="_blank"
+                  >Facebook</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">CONSENT</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de preferencias</td>
+              <td class="border border-slate-300 px-3 py-2">Google</td>
+              <td class="border border-slate-300 px-3 py-2">Almacenar las preferencias de consentimiento de cookies</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (20 años)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank"
+                  >Google</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">fr</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de redes sociales</td>
+              <td class="border border-slate-300 px-3 py-2">Facebook</td>
+              <td class="border border-slate-300 px-3 py-2">Mostrar anuncios relevantes y mejorar la relevancia de los anuncios en Facebook</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (3 meses)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://www.facebook.com/privacy/policy/?entry_point=facebook_page_footer" rel="noopener noreferrer" target="_blank"
+                  >Facebook</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-3 py-2 font-mono text-xs">VISITOR_INFO1_LIVE</td>
+              <td class="border border-slate-300 px-3 py-2">Cookie de analíticas</td>
+              <td class="border border-slate-300 px-3 py-2">YouTube</td>
+              <td class="border border-slate-300 px-3 py-2">Rastrear información del usuario y personalizar la visualización de vídeos integrados</td>
+              <td class="border border-slate-300 px-3 py-2">Persistente (8 meses)</td>
+              <td class="border border-slate-300 px-3 py-2">
+                <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank"
+                  >Google</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        El portal del que es titular <strong>SEVILEGALIA SOCIEDAD LIMITADA</strong> puede contener enlaces a sitios web de
+        terceros, cuyas políticas de privacidad son ajenas a la de SEVILEGALIA SOCIEDAD LIMITADA. Al acceder a tales sitios
+        web usted puede decidir si acepta sus políticas de privacidad y de cookies. Con carácter general, si navega por
+        internet usted puede aceptar o rechazar las cookies de terceros desde las opciones de configuración de su
+        navegador.
       </p>
 
-      <h2>4. Cómo gestionar o desactivar las cookies</h2>
+      <h2>3. Consentimiento</h2>
       <p>
-        Puede bloquear o eliminar cookies desde la configuración de su navegador (Chrome, Firefox, Safari, Edge, etc.).
-        Tenga en cuenta que desactivar cookies técnicas puede afectar al funcionamiento de algunas partes del sitio.
+        En relación con la utilización de cookies de este sitio web, el usuario autoriza y consiente su uso de la siguiente
+        forma: cuando el usuario accede a cualquier página de la web, verá un aviso donde se indica que la página web de
+        SEVILEGALIA SOCIEDAD LIMITADA utiliza cookies, pudiendo el usuario aceptar o rechazar o configurar las mismas. Al
+        hacer clic en aceptar, usted acepta el uso de nuestras cookies y, en su caso, las de terceros. A estos efectos, le
+        indicamos que el panel de configuración permite la posibilidad de aceptarlas o rechazarlas por tipología.
       </p>
 
-      <h2>5. Actualizaciones</h2>
+      <h2>4. Plazos o criterios de conservación de datos</h2>
       <p>
-        Esta política puede actualizarse para reflejar cambios legislativos o en el uso de cookies. Se recomienda revisarla
-        periódicamente. Para cualquier consulta: <a href="mailto:info@ejemplo-despacho.es">info@ejemplo-despacho.es</a>.
+        Los datos obtenidos a través del uso de las cookies por usted seleccionadas serán conservados durante el tiempo
+        necesario para cumplir con las finalidades para los que fueron recopilados y durante el periodo de tiempo
+        establecido en el apartado «¿Qué tipos de cookies utiliza esta página web?» de la presente política, para cada una
+        de las cookies instaladas en el dispositivo.
+      </p>
+
+      <h2>5. Cómo bloquear, revocar o eliminar las cookies instaladas</h2>
+      <p>
+        Puede usted permitir, bloquear, revocar o eliminar las cookies instaladas en su equipo mediante la configuración de
+        las opciones de su navegador. Puede encontrar información sobre cómo hacerlo, en relación con los navegadores más
+        comunes, en los enlaces que se incluyen a continuación:
+      </p>
+      <ul>
+        <li>
+          Explorer:
+          <a href="https://support.microsoft.com/es-es/kb/278835" rel="noopener noreferrer" target="_blank"
+            >https://support.microsoft.com/es-es/kb/278835</a
+          >
+        </li>
+        <li>
+          Microsoft Edge:
+          <a href="https://privacy.microsoft.com/es-es/windows-10-microsoft-edge-and-privacy" rel="noopener noreferrer" target="_blank"
+            >https://privacy.microsoft.com/es-es/windows-10-microsoft-edge-and-privacy</a
+          >
+        </li>
+        <li>
+          Chrome:
+          <a
+            href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=es"
+            rel="noopener noreferrer"
+            target="_blank">https://support.google.com/chrome/answer/95647</a>
+        </li>
+        <li>
+          Firefox:
+          <a href="https://support.mozilla.org/es/kb/Borrar%20cookies" rel="noopener noreferrer" target="_blank"
+            >https://support.mozilla.org/es/kb/Borrar cookies</a
+          >
+        </li>
+        <li>
+          Safari:
+          <a href="https://support.apple.com/kb/ph5042" rel="noopener noreferrer" target="_blank"
+            >https://support.apple.com/kb/ph5042</a
+          >
+        </li>
+        <li>
+          Opera:
+          <a href="https://help.opera.com/en/latest/web-preferences/#cookies" rel="noopener noreferrer" target="_blank"
+            >https://help.opera.com/en/latest/web-preferences/#cookies</a
+          >
+        </li>
+      </ul>
+      <p>
+        Le informamos, no obstante, de la posibilidad de que la desactivación de alguna cookie impida o dificulte la
+        navegación o la prestación de los servicios ofrecidos en la página web.
+      </p>
+
+      <h2>6. Destinatarios de la información</h2>
+      <p>
+        Tendrán acceso a la información obtenida a través de las cookies del sitio web las empresas colaboradoras
+        detalladas en el panel de configuración, donde podrá asimismo consultar las finalidades con las que la utilizan y
+        sus respectivas políticas de privacidad. Asimismo, le informamos de que algunos de nuestros proveedores así como
+        empresas colaboradoras pueden realizar transferencias a terceros países. Puede informarse de las transferencias a
+        terceros países que, en su caso, realicen en sus correspondientes políticas de privacidad, accesibles a través de
+        los enlaces facilitados en el panel de configuración.
+      </p>
+
+      <h2>7. Modificaciones y actualización</h2>
+      <p>
+        La presente política de cookies puede verse modificada o actualizada en función de las exigencias legales
+        establecidas o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de
+        Protección de Datos o cambios en nuestro sitio web. Por esta razón, aconsejamos a los usuarios que visiten
+        periódicamente nuestra política de cookies. Si tiene dudas acerca de esta política de cookies, puede contactar con
+        SEVILEGALIA SOCIEDAD LIMITADA a través del siguiente correo electrónico:
+        <a href="mailto:info@sevilegalia.com">info@sevilegalia.com</a>.
+      </p>
+      <p>
+        Puede consultar también nuestra
+        <a href={withBase('/legal/privacidad/')}>Política de Privacidad</a>.
       </p>
     </div>
   </article>

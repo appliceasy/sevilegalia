@@ -21,20 +21,18 @@ const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
 const normalizedCanonicalPath =
   canonicalPath === '/' ? '/' : canonicalPath.endsWith('/') ? canonicalPath : `${canonicalPath}/`;
 const canonical = `${siteUrl}${normalizedCanonicalPath === '/' ? '' : normalizedCanonicalPath}` || undefined;
-const fullTitle = title.includes('|') ? title : `${title} | Sevilegalia`;
+const fullTitle = title.includes('|') ? title : `${title} | SeviLegalia`;
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="motion-safe:scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#07404E" />
-    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" sizes="any" />
-    <link rel="icon" href={withBase('/favicon.png')} type="image/png" sizes="512x512" />
-    <link rel="shortcut icon" href={withBase('/favicon.png')} type="image/png" />
-    <link rel="apple-touch-icon" href={withBase('/favicon.png')} />
+    <link rel="icon" href={withBase('/Icono_justicia_balanza.png')} type="image/png" sizes="any" />
+    <link rel="apple-touch-icon" href={withBase('/Icono_justicia_balanza.png')} />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
@@ -49,18 +47,22 @@ const fullTitle = title.includes('|') ? title : `${title} | Sevilegalia`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&family=Poppins:wght@500;600;700&family=Roboto:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen bg-white font-body text-slate-800 antialiased">
+  <body class="min-h-screen bg-white font-body text-slate-800 antialiased motion-safe:scroll-smooth">
     <a
       href="#contenido-principal"
       class="focus:bg-accent focus:text-white sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:px-4 focus:py-2"
       >Saltar al contenido</a
     >
     <Header />
-    <main id="contenido-principal" tabindex="-1">
+    <main
+      id="contenido-principal"
+      tabindex="-1"
+      style={`--sevi-main-bg: url('${withBase('/sevilegalia_no_bg.png')}')`}
+    >
       <slot />
     </main>
     <Footer />
@@ -73,4 +75,114 @@ const fullTitle = title.includes('|') ? title : `${title} | Sevilegalia`;
     outline: 2px solid #145c46;
     outline-offset: 2px;
   }
+
+  .reveal-section {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-section.is-inview {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    will-change: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-section {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
+  }
+
+  .card-elevate {
+    transition:
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
+  }
+  .card-elevate:hover {
+    box-shadow: 0 12px 40px -8px rgba(7, 64, 78, 0.14);
+    transform: translateY(-2px);
+    border-color: #b8d4cc;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-elevate:hover {
+      transform: none;
+    }
+  }
+
+  a:not([class*='rounded-full']) {
+    transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  /** Marca de agua muy suave con la imagen corporativa (legibilidad del contenido) */
+  #contenido-principal {
+    position: relative;
+    isolation: isolate;
+  }
+  #contenido-principal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--sevi-main-bg);
+    background-repeat: no-repeat;
+    background-position: 50% 12%;
+    background-size: min(920px, 92vw);
+    opacity: 0.055;
+  }
+  @media (min-width: 1024px) {
+    #contenido-principal::before {
+      background-position: 50% 8%;
+      opacity: 0.065;
+    }
+  }
 </style>
+
+<script is:inline>
+  (function () {
+    var run = function () {
+      var nodes = document.querySelectorAll('[data-reveal]');
+      if (!nodes.length) return;
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        nodes.forEach(function (el) {
+          el.classList.add('is-inview');
+        });
+        return;
+      }
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('is-inview');
+            io.unobserve(e.target);
+          });
+        },
+        { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
+      );
+      nodes.forEach(function (el) {
+        io.observe(el);
+      });
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+    else run();
+  })();
+</script>
+
+<script is:inline>
+  (function () {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('[data-hero-video]').forEach(function (v) {
+      try {
+        v.pause();
+      } catch (e) {}
+      v.removeAttribute('autoplay');
+      v.style.display = 'none';
+    });
+  })();
+</script>

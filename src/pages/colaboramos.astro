@@ -1,0 +1,129 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const meta = {
+  title: '¿Y si colaboramos?',
+  description:
+    'Colaboración jurídica BPO, presencia en Andalucía Occidental e iguales para pymes. SeviLegalia como partner en el sur de España.',
+};
+
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/colaboramos/">
+  <div class="border-b border-neutral-border bg-neutral-surface">
+    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl font-bold text-primary">¿Y si colaboramos?</h1>
+      <p class="mt-4 max-w-3xl font-display text-xl font-bold text-primary sm:text-2xl">
+        Tu socio legal en el sur: solvencia, rigor y presencia
+      </p>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+        En SeviLegalia somos expertos en generar alianzas de alto valor. Actuamos como el brazo jurídico y operativo de
+        entidades bancarias, fondos de inversión y despachos de ámbito nacional que requieren una respuesta ágil, técnica
+        y presencial en Andalucía Occidental.
+      </p>
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+        Nuestra red de colaboradores y nuestro equipo interno garantizan una ejecución impecable en cada procedimiento,
+        desde la gestión de grandes volúmenes hasta la representación personalizada.
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-content space-y-14 px-4 py-16 sm:px-6 lg:px-8">
+    <section class="scroll-mt-24" aria-labelledby="colab-bpo" id="bpo">
+      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
+        <h2 id="colab-bpo" class="font-display text-2xl font-bold text-primary sm:text-3xl">
+          1. Externalización jurídica (BPO legal)
+        </h2>
+        <p class="mt-4 leading-relaxed text-slate-600">
+          Ofrecemos soporte técnico a nivel estatal para la gestión de procedimientos judiciales, adaptándonos a los
+          estándares de calidad de cada firma:
+        </p>
+        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
+          <li>
+            <strong class="text-slate-800">Gestión de carteras:</strong> Redacción de demandas, contestaciones y seguimiento
+            procesal integral en procedimientos bancarios y civiles.
+          </li>
+          <li>
+            <strong class="text-slate-800">Litigación masiva:</strong> Capacidad operativa para gestionar paquetes de
+            demandas en volumen con rigor técnico.
+          </li>
+          <li>
+            <strong class="text-slate-800">Extranjería para colectivos:</strong> Gestión masiva de solicitudes de
+            nacionalidad y permisos de residencia para entidades y colaboradores.
+          </li>
+          <li>
+            <strong class="text-slate-800">Asuntos pormenorizados:</strong> Atención detallada a expedientes judiciales
+            particulares que requieren un estudio técnico exhaustivo fuera de los procesos estándar.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="scroll-mt-24" aria-labelledby="colab-territorio" id="territorio">
+      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
+        <h2 id="colab-territorio" class="font-display text-2xl font-bold text-primary sm:text-3xl">
+          2. Presencia y representación en el territorio
+        </h2>
+        <p class="mt-4 leading-relaxed text-slate-600">
+          Somos la referencia presencial en las provincias de Sevilla, Huelva y Cádiz. Cubrimos todas las necesidades donde
+          la presencia física es determinante:
+        </p>
+        <ul class="mt-6 list-disc space-y-3 pl-5 text-slate-600">
+          <li>
+            <strong class="text-slate-800">Sustitución en vistas:</strong> Representación en vistas, audiencias previas y
+            juicios con total solvencia y conocimiento del foro local.
+          </li>
+          <li>
+            <strong class="text-slate-800">Apoderamiento bancario:</strong> Actuamos como apoderados de entidades
+            financieras y fondos en firmas de préstamos, compraventas, lanzamientos y subastas.
+          </li>
+          <li>
+            <strong class="text-slate-800">Comités y mesas de negociación:</strong> Representamos los intereses de su
+            entidad en mesas de negociación, comités de crisis o juntas de acreedores, garantizando una defensa firme de su
+            postura.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="scroll-mt-24" aria-labelledby="colab-iguales" id="iguales">
+      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
+        <h2 id="colab-iguales" class="font-display text-2xl font-bold text-primary sm:text-3xl">
+          3. Servicios de iguales para pymes
+        </h2>
+        <p class="mt-4 leading-relaxed text-slate-600">
+          Para aquellas empresas que buscan una gestión jurídica integral, ofrecemos un modelo de iguala de servicios,
+          permitiendo a la pyme contar con un departamento legal interno externalizado por una cuota fija, cubriendo desde
+          el asesoramiento diario hasta la defensa jurídica.
+        </p>
+      </div>
+    </section>
+
+    <section class="scroll-mt-24" aria-labelledby="colab-futuro" id="contacto-colaboracion">
+      <div class="rounded-xl border border-neutral-border bg-white p-8 shadow-card sm:p-10">
+        <h2 id="colab-futuro" class="font-display text-2xl font-bold text-primary sm:text-3xl">¿Hablamos de futuro?</h2>
+        <p class="mt-4 font-heading text-lg font-semibold text-primary">Inicie su colaboración con SeviLegalia</p>
+        <p class="mt-4 leading-relaxed text-slate-600">
+          En SeviLegalia no solo ofrecemos servicios, construimos alianzas sólidas basadas en la eficiencia y la confianza
+          mutua. Estamos plenamente abiertos a estudiar nuevas propuestas de colaboración que se adapten a sus necesidades
+          operativas, ya sea para proyectos puntuales o para la gestión de grandes volúmenes de trabajo.
+        </p>
+        <p class="mt-4 leading-relaxed text-slate-600">
+          Si busca un partner jurídico con capacidad de respuesta inmediata y presencia real en el sur de España, queremos
+          conocer su propuesta.
+        </p>
+        <div class="mt-10">
+          <a
+            href={withBase('/contacto/')}
+            class="inline-flex items-center justify-center rounded bg-accent px-6 py-3 font-heading text-sm font-semibold text-white transition hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-offset-2"
+          >
+            Contacta con nosotros
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

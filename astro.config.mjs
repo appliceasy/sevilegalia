@@ -25,6 +25,9 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'always',
+  redirects: {
+    '/despacho': '/sobre-nosotros',
+  },
   integrations: [tailwind()],
   compressHTML: true,
   vite: {

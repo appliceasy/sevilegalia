@@ -1,8 +1,9 @@
 ---
 const navItems = [
   { href: '/', label: 'Inicio' },
-  { href: '/despacho/', label: 'Despacho' },
+  { href: '/sobre-nosotros/', label: 'Sobre nosotros' },
   { href: '/servicios/', label: 'Servicios' },
+  { href: '/colaboramos/', label: '¿Y si colaboramos?' },
   { href: '/contacto/', label: 'Contacto' },
 ];
 
@@ -13,26 +14,29 @@ const withBase = (path: string) =>
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-neutral-border bg-primary/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-primary/90"
+  class="sticky top-0 z-50 border-b border-neutral-border bg-primary/95 shadow-sm backdrop-blur transition-[background-color,box-shadow] duration-300 ease-out supports-[backdrop-filter]:bg-primary/90"
   role="banner"
 >
   <div class="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
     <a
       href={withBase('/')}
-      class="flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-white transition hover:opacity-95 focus-visible:outline-offset-4"
-      aria-label="Sevilegalia — Inicio, asesoría jurídica integral"
+      class="group flex items-center gap-2.5 transition hover:opacity-95 focus-visible:outline-offset-4 sm:gap-3"
+      aria-label="SeviLegalia — Inicio"
     >
       <img
-        src={withBase('/favicon.svg')}
+        src={withBase('/Icono_justicia_balanza.png')}
         alt=""
-        width="44"
-        height="44"
-        class="h-10 w-10 shrink-0"
+        width="48"
+        height="64"
+        class="h-9 w-auto max-h-11 shrink-0 object-contain object-center drop-shadow-sm sm:h-10"
         decoding="async"
+        aria-hidden="true"
       />
-      <span class="flex flex-col leading-tight">
-        <span class="font-display text-xl font-bold text-white sm:text-2xl">Sevilegalia</span>
-        <span class="mt-0.5 text-xs font-normal text-slate-300">Asesoría jurídica integral</span>
+      <span class="flex min-w-0 flex-col leading-tight">
+        <span class="font-display text-lg font-bold tracking-tight text-white sm:text-xl">SeviLegalia</span>
+        <span class="hidden text-[0.65rem] font-medium text-accent-highlight/90 sm:block sm:text-xs"
+          >A tu lado ante la justicia</span
+        >
       </span>
     </a>
 
@@ -43,7 +47,7 @@ const withBase = (path: string) =>
           <a
             href={withBase(item.href)}
             class:list={[
-              'rounded px-3 py-2 text-sm font-medium transition',
+              'rounded px-3 py-2 text-sm font-medium transition-colors duration-200 ease-out',
               currentPath === item.href
                 ? 'bg-white/10 text-white'
                 : 'text-slate-200 hover:bg-white/5 hover:text-white',

@@ -1,0 +1,115 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const meta = {
+  title: 'Sobre nosotros',
+  description:
+    'SeviLegalia: despacho multidisciplinar para particulares y empresas. Transparencia, inmediatez, enfoque preventivo y adaptabilidad.',
+};
+---
+
+<Layout title={meta.title} description={meta.description} canonicalPath="/sobre-nosotros/">
+  <div class="border-b border-neutral-border bg-neutral-surface">
+    <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl font-bold text-primary">Sobre nosotros</h1>
+      <p class="mt-4 max-w-3xl font-display text-2xl font-bold text-primary sm:text-3xl">
+        Un aliado legal para particulares y empresas
+      </p>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+        SeviLegalia es un despacho multidisciplinar diseñado para ofrecer una respuesta integral a las necesidades
+        jurídicas de hoy. Estamos acostumbrados a trabajar con la misma dedicación tanto para particulares que buscan
+        proteger su patrimonio y derechos, como para entidades, autónomos y pymes que necesitan un respaldo legal solvente
+        para su actividad diaria.
+      </p>
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+        Con más de década de experiencia en el sector, hemos evolucionado para ofrecer una abogacía moderna, donde la
+        tecnología y el trato humano se dan la mano para proteger lo que más te importa: nuestros clientes.
+      </p>
+    </div>
+  </div>
+
+  <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="forma-trabajar-titulo">
+    <h2 id="forma-trabajar-titulo" class="text-balance font-display text-2xl font-bold text-primary">
+      Cómo trabajamos
+    </h2>
+    <ol class="mt-10 space-y-10 text-slate-600">
+      <li class="flex gap-4">
+        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">1.</span>
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-primary">Transparencia y lenguaje claro</h3>
+          <p class="mt-2 leading-relaxed">
+            Creemos que para que tomes las mejores decisiones, debes entender tu caso de principio a fin. Por eso,
+            eliminamos las barreras del lenguaje jurídico complejo y te hablamos de tú a tú, con total honestidad sobre las
+            posibilidades de éxito de tu proceso.
+          </p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">2.</span>
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-primary">Inmediatez y respuesta real</h3>
+          <p class="mt-2 leading-relaxed">
+            Sabemos que los tiempos de la justicia no siempre coinciden con tus necesidades. Por ello, apostamos por una
+            gestión ágil y una comunicación fluida. En SeviLegalia, tu caso no es un número de expediente; es nuestra
+            prioridad absoluta.
+          </p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">3.</span>
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-primary">Un enfoque preventivo</h3>
+          <p class="mt-2 leading-relaxed">
+            Nuestro objetivo no es solo ganar pleitos, sino evitarlos. A través de servicios como nuestro Plan
+            Tranquilidad, trabajamos de manera proactiva para blindar tus contratos y decisiones diarias, ahorrándote
+            costes y preocupaciones a largo plazo.
+          </p>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="font-heading text-xl font-bold text-accent" aria-hidden="true">4.</span>
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-primary">Adaptabilidad total</h3>
+          <p class="mt-2 leading-relaxed">
+            Nos movemos contigo. Tanto si prefieres una reunión presencial en nuestro despacho como si necesitas una
+            gestión totalmente telemática, nos adaptamos a tu ritmo de vida para que la asistencia legal sea una facilidad,
+            nunca una carga.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bg-neutral-surface py-16" aria-labelledby="mision-titulo">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      <h2 id="mision-titulo" class="font-display text-2xl font-bold text-primary">Nuestra misión</h2>
+      <p class="mt-6 max-w-3xl leading-relaxed text-slate-600">
+        En SeviLegalia, nuestra misión trasciende la mera prestación de servicios jurídicos; trabajamos para ser el
+        respaldo estratégico que permite a particulares y empresas operar con absoluta seguridad legal. Nos define un
+        compromiso innegociable con la excelencia y la inmediatez, integrando la asistencia legal en el día a día de
+        nuestros clientes para que la justicia sea siempre una solución y nunca una barrera.
+      </p>
+      <p class="mt-4 max-w-3xl font-heading font-semibold text-primary">Nuestra labor se fundamenta en tres pilares esenciales:</p>
+      <ul class="mt-6 max-w-3xl list-disc space-y-3 pl-5 text-slate-600">
+        <li>
+          <strong class="text-slate-800">Protección proactiva:</strong> No solo resolvemos conflictos, sino que los
+          prevenimos a través de un asesoramiento preventivo que blinda los intereses de quienes confían en nosotros.
+        </li>
+        <li>
+          <strong class="text-slate-800">Accesibilidad y confianza:</strong> Eliminamos la distancia entre el abogado y el
+          ciudadano, ofreciendo un trato directo y un lenguaje claro que devuelve al cliente el control sobre sus
+          decisiones legales.
+        </li>
+        <li>
+          <strong class="text-slate-800">Generación de valor:</strong> Entendemos la abogacía como una herramienta para
+          optimizar la vida y los negocios de nuestros clientes, transformando sus consultas en soluciones rentables y
+          seguras.
+        </li>
+      </ul>
+      <p class="mt-8 max-w-3xl leading-relaxed text-slate-600">
+        En definitiva, existimos para estar a tu lado, aplicando nuestros más de 10 años de experiencia para garantizar
+        que, ante cualquier reto legal, nunca te sientas solo.
+      </p>
+    </div>
+  </section>
+</Layout>

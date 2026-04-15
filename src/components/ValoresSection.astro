@@ -1,0 +1,94 @@
+---
+/**
+ * Valores: tarjetas con pasos numerados; en móvil carrusel horizontal con snap (scroll-snap).
+ */
+interface Valor {
+  titulo: string;
+  texto: string;
+}
+
+interface Props {
+  valores: Valor[];
+  titulo?: string;
+  subtitulo?: string;
+  eyebrow?: string;
+  idTitulo?: string;
+}
+
+const {
+  valores,
+  titulo = 'Nuestros valores',
+  subtitulo = 'Resultados y trato: lo que nos piden quienes ya confían en el despacho.',
+  eyebrow = 'Por qué SeviLegalia',
+  idTitulo = 'valores-titulo',
+} = Astro.props;
+---
+
+<section
+  class="reveal-section relative overflow-hidden bg-gradient-to-b from-primary/[0.07] via-white to-neutral-surface"
+  data-reveal
+  aria-labelledby={idTitulo}
+>
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base sm:tracking-[0.2em]"
+      >
+        {eyebrow}
+      </p>
+      <h2 id={idTitulo} class="mt-3 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">
+        {titulo}
+      </h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+        {subtitulo}
+      </p>
+    </div>
+
+    <div class="-mx-4 px-4 sm:mx-0 sm:px-0">
+      <div
+        class="valor-cards mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-visible pb-4 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden"
+        role="list"
+      >
+      {
+        valores.map((v, i) => (
+          <article
+            role="listitem"
+            class="valor-card group min-w-[min(22rem,calc(100vw-2.5rem))] max-w-md snap-center snap-always rounded-2xl border border-neutral-border bg-white p-6 shadow-card ring-1 ring-primary/[0.06] transition duration-300 ease-smooth hover:-translate-y-0.5 hover:shadow-card-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-w-0 sm:max-w-none sm:snap-none sm:p-8"
+          >
+            <div class="flex gap-4 sm:block sm:gap-0">
+              <div
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-gradient text-lg font-bold tabular-nums text-white shadow-md sm:h-16 sm:w-16 sm:text-xl"
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <div class="min-w-0 flex-1 sm:mt-5">
+                <h3 class="font-display text-xl font-bold leading-snug text-primary sm:text-2xl">{v.titulo}</h3>
+                <p class="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">{v.texto}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+      </div>
+    </div>
+
+    <p class="mt-1 text-center text-sm text-slate-500 sm:hidden" aria-hidden="true">
+      Desliza para ver los tres pilares
+    </p>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 640px) {
+    .valor-cards {
+      scroll-snap-type: none;
+    }
+  }
+</style>

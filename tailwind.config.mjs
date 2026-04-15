@@ -36,8 +36,8 @@ export default {
       },
       fontFamily: {
         display: ['"Playfair Display"', 'Georgia', 'serif'],
-        heading: ['Poppins', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+        heading: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+        body: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         content: '1200px',
@@ -50,6 +50,37 @@ export default {
       },
       boxShadow: {
         card: '0 4px 24px -4px rgba(7, 64, 78, 0.12)',
+        'card-hover': '0 12px 40px -8px rgba(7, 64, 78, 0.18)',
+      },
+      transitionDuration: {
+        DEFAULT: '200ms',
+        layout: '280ms',
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '65ch',
+            fontFamily:
+              '"Source Sans 3", system-ui, ui-sans-serif, sans-serif',
+          },
+        },
+      },
+      keyframes: {
+        'fade-up': {
+          from: { opacity: '0', transform: 'translate3d(0, 1.25rem, 0)' },
+          to: { opacity: '1', transform: 'translate3d(0, 0, 0)' },
+        },
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'fade-in': 'fade-in 0.5s ease-out both',
       },
     },
   },

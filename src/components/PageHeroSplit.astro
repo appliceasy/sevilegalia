@@ -1,0 +1,45 @@
+---
+/**
+ * Cabecera de página: texto (slot) + imagen, alineada con el estilo del sitio.
+ */
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  /** legal = imagen más baja, menos protagonismo */
+  variant?: 'default' | 'legal';
+}
+const { imageSrc, imageAlt, variant = 'default' } = Astro.props;
+const isLegal = variant === 'legal';
+const loading = isLegal ? 'lazy' : 'eager';
+---
+
+<div class="border-b border-neutral-border bg-neutral-surface">
+  <div
+    class:list={[
+      'mx-auto grid max-w-content gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8',
+      isLegal ? 'py-10 lg:py-12' : 'py-14',
+    ]}
+  >
+    <div class="min-w-0">
+      <slot />
+    </div>
+    <div class:list={[isLegal && 'lg:justify-self-end lg:max-w-md']}>
+      <div
+        class:list={[
+          'group overflow-hidden rounded-lg shadow-card ring-1 ring-slate-200/80 transition-shadow duration-layout ease-smooth hover:shadow-card-hover',
+          isLegal ? 'aspect-[16/10] max-h-52 sm:max-h-56' : 'aspect-[4/3]',
+        ]}
+      >
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width={isLegal ? 640 : 900}
+          height={isLegal ? 400 : 675}
+          loading={loading}
+          decoding="async"
+          class="h-full w-full object-cover transition duration-700 ease-smooth motion-reduce:transition-none group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+        />
+      </div>
+    </div>
+  </div>
+</div>

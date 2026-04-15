@@ -1,0 +1,28 @@
+---
+/**
+ * Franja visual entre bloques de contenido (despacho / entorno profesional).
+ */
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+}
+const { imageSrc, imageAlt } = Astro.props;
+---
+
+<section class="border-y border-neutral-border bg-neutral-surface py-10 sm:py-12" aria-label={imageAlt}>
+  <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+    <figure
+      class="group overflow-hidden rounded-xl shadow-card ring-1 ring-slate-200/80 transition-shadow duration-layout ease-smooth hover:shadow-card-hover"
+    >
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        width="1400"
+        height="560"
+        loading="lazy"
+        decoding="async"
+        class="max-h-[min(50vh,380px)] w-full object-cover transition duration-700 ease-smooth motion-reduce:transition-none group-hover:scale-[1.02] motion-reduce:group-hover:scale-100 sm:max-h-[420px] md:max-h-[460px]"
+      />
+    </figure>
+  </div>
+</section>

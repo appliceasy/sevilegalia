@@ -5,11 +5,14 @@ import ContactForm from '@/components/ContactForm.astro';
 const meta = {
   title: 'Contacto',
   description:
-    'Contacte con Sevilegalia para solicitar una consulta. Formulario de contacto y datos del despacho (sitio informativo).',
+    'Contacta con SeviLegalia. Formulario y ubicación del despacho en Sevilla. Primera consulta gratuita.',
 };
 
-const contactoImage =
-  'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80';
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+
+const contactoImage = '/Imagen_secundaria.png';
 ---
 
 <Layout title={meta.title} description={meta.description} canonicalPath="/contacto/">
@@ -17,7 +20,7 @@ const contactoImage =
     <div class="mx-auto max-w-content px-4 py-14 sm:px-6 lg:px-8">
       <h1 class="font-display text-4xl font-bold text-primary">Contacto</h1>
       <p class="mt-4 max-w-2xl text-lg text-slate-600">
-        Estamos a su disposición para concertar una primera reunión o resolver dudas iniciales sobre su caso.
+        Estamos a tu disposición para resolver dudas o concertar una primera reunión.
       </p>
     </div>
   </div>
@@ -27,8 +30,8 @@ const contactoImage =
       <div>
         <div class="overflow-hidden rounded-lg shadow-card ring-1 ring-slate-200/80">
           <img
-            src={contactoImage}
-            alt="Manos estrechándose en acuerdo profesional tras reunión de negocios"
+            src={withBase(contactoImage)}
+            alt="Escritorio jurídico profesional en el despacho SeviLegalia"
             width={900}
             height={600}
             loading="lazy"
@@ -37,22 +40,17 @@ const contactoImage =
           />
         </div>
         <div class="mt-8 rounded-lg border border-neutral-border bg-neutral-surface p-6">
-          <h2 class="font-heading text-lg font-semibold text-primary">Datos del despacho</h2>
+          <h2 class="font-heading text-lg font-semibold text-primary">¿Dónde nos encontramos?</h2>
           <address class="mt-4 not-italic text-sm leading-relaxed text-slate-600">
-            <p class="font-medium text-slate-800">Sevilegalia Asesoría Jurídica</p>
-            <p>Calle Ejemplo, 123, 4.º B</p>
-            <p>28001 Madrid, España</p>
+            <p>C. Progreso, 20, 2ºA</p>
+            <p>41013 Sevilla</p>
             <p class="mt-3">
-              <span class="sr-only">Teléfono: </span>
-              <a href="tel:+34900000000" class="text-accent hover:underline">+34 900 000 000</a>
-            </p>
-            <p>
               <span class="sr-only">Email: </span>
-              <a href="mailto:info@ejemplo-despacho.es" class="text-accent hover:underline">info@ejemplo-despacho.es</a>
+              <a href="mailto:info@sevilegalia.com" class="text-accent hover:underline">info@sevilegalia.com</a>
             </p>
           </address>
           <p class="mt-4 text-xs text-slate-500">
-            Horario de atención telefónica: lunes a viernes, 9:00–18:00 (placeholder).
+            Horario de atención al cliente: lunes a viernes, 9:00–18:00.
           </p>
         </div>
       </div>

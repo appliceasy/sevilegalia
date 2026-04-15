@@ -1,24 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">SeviLegalia</title>
-  <desc id="desc">Giralda de Sevilla</desc>
-  <defs>
-    <linearGradient id="sevi-bg" x1="6" y1="4" x2="58" y2="60">
-      <stop stop-color="#0a2e24"/>
-      <stop offset="0.5" stop-color="#07404E"/>
-      <stop offset="1" stop-color="#145c46"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="url(#sevi-bg)"/>
-  <g fill="#c5e3d7" transform="translate(9.5 5) scale(0.52)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96" fill="none" role="img" aria-labelledby="giralda-title">
+  <title id="giralda-title">Giralda de Sevilla</title>
+  <!-- Silueta reconocible: linternilla, cuerpo escalonado y base ancha -->
+  <g fill="#c5e3d7">
+    <!-- Linternilla / remate -->
     <path
       d="M36 1.5 L40 9 L43 11 L43 15 L41 17 L41 22 L45 25 L45 30 L42 32 L42 36 L38 38 L38 42 L34 42 L34 38 L30 36 L30 32 L27 30 L27 25 L31 22 L31 17 L29 15 L29 11 L32 9 Z"
     />
+    <!-- Anillo bajo la linternilla -->
     <rect x="26" y="42" width="20" height="4" rx="1" />
+    <!-- Primer cuerpo (renacentista, estrecho) -->
     <path d="M22 46 L50 46 L49 54 L23 54 Z" />
     <rect x="20" y="54" width="32" height="8" rx="1" />
+    <!-- Tramos almohades: franjas escalonadas (perfil típico de la torre) -->
     <path d="M16 62 L56 62 L54.5 72 L17.5 72 Z" />
     <path d="M14 72 L58 72 L56.5 80 L15.5 80 Z" />
     <path d="M12 80 L60 80 L58 90 L14 90 Z" />
+    <!-- Sillares / zócalo -->
     <rect x="8" y="90" width="56" height="6" rx="2" />
   </g>
 </svg>

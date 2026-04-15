@@ -15,17 +15,18 @@ const withBase = (path: string) =>
 <footer class="border-t border-neutral-border bg-primary text-slate-300" role="contentinfo">
   <div class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-      <div class="flex gap-3">
+      <div class="flex gap-4">
         <img
-          src={withBase('/favicon.svg')}
+          src={withBase('/Icono_justicia_balanza.png')}
           alt=""
-          width="40"
-          height="40"
-          class="mt-1 h-10 w-10 shrink-0 opacity-90"
+          width="48"
+          height="64"
+          class="mt-0.5 h-11 w-auto max-h-12 shrink-0 self-start object-contain object-center drop-shadow-sm"
           decoding="async"
+          aria-hidden="true"
         />
         <div>
-          <p class="font-display text-xl font-bold text-white">Sevilegalia</p>
+          <p class="font-display text-xl font-bold text-white">SeviLegalia</p>
           <p class="mt-2 max-w-sm text-sm leading-relaxed">
             Asesoramiento jurídico, fiscal y laboral para empresas, autónomos y particulares. Confianza, rigor y
             cercanía.
@@ -35,8 +36,17 @@ const withBase = (path: string) =>
       <div>
         <h2 class="font-heading text-sm font-semibold uppercase tracking-wider text-white">Enlaces</h2>
         <ul class="mt-4 space-y-2 text-sm">
-          <li><a href={withBase('/despacho/')} class="hover:text-accent-highlight focus-visible:underline">Despacho</a></li>
+          <li>
+            <a href={withBase('/sobre-nosotros/')} class="hover:text-accent-highlight focus-visible:underline"
+              >Sobre nosotros</a
+            >
+          </li>
           <li><a href={withBase('/servicios/')} class="hover:text-accent-highlight focus-visible:underline">Servicios</a></li>
+          <li>
+            <a href={withBase('/colaboramos/')} class="hover:text-accent-highlight focus-visible:underline"
+              >¿Y si colaboramos?</a
+            >
+          </li>
           <li><a href={withBase('/contacto/')} class="hover:text-accent-highlight focus-visible:underline">Contacto</a></li>
         </ul>
       </div>
@@ -56,7 +66,7 @@ const withBase = (path: string) =>
       </div>
     </div>
     <div class="mt-10 border-t border-white/10 pt-8 text-center text-xs text-slate-500">
-      <p>© {year} Sevilegalia. Todos los derechos reservados.</p>
+      <p>© {year} SeviLegalia. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

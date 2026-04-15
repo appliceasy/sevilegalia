@@ -1,10 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) =>
+  `${baseUrl}${path.replace(/^\//, '')}`.replace(/(?<!:)\/{2,}/g, '/');
+
 const meta = {
   title: 'Política de privacidad',
   description:
-    'Información sobre el tratamiento de datos personales conforme al RGPD: responsable, finalidades, derechos y conservación. Sevilegalia.',
+    'Tratamiento de datos personales conforme al RGPD y la LOPDGDD. Responsable, finalidades, derechos y conservación. SeviLegalia.',
 };
 ---
 
@@ -12,86 +16,162 @@ const meta = {
   <div class="border-b border-neutral-border bg-neutral-surface">
     <div class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
       <h1 class="font-display text-4xl font-bold text-primary">Política de privacidad</h1>
-      <p class="mt-2 text-sm text-slate-500">Conforme al Reglamento (UE) 2016/679 (RGPD) y la LOPDGDD.</p>
+      <p class="mt-2 text-sm text-slate-500">Última actualización: 7 de abril de 2026.</p>
     </div>
   </div>
 
   <article class="mx-auto max-w-content px-4 py-12 sm:px-6 lg:px-8">
     <div class="prose prose-slate max-w-3xl prose-headings:font-heading prose-h2:text-primary prose-a:text-accent">
-      <h2>1. Responsable del tratamiento</h2>
       <p>
-        <strong>Identidad:</strong> Sevilegalia Asesoría Jurídica (<em>denominación a completar</em>).<br />
-        <strong>NIF/CIF:</strong> [PLACEHOLDER]<br />
-        <strong>Dirección:</strong> Calle Ejemplo, 123, 4.º B, 28001 Madrid, España.<br />
-        <strong>Correo electrónico:</strong> <a href="mailto:privacidad@ejemplo-despacho.es">privacidad@ejemplo-despacho.es</a> (correo dedicado — placeholder).
+        A los efectos de lo previsto en la vigente normativa de Protección de Datos, Reglamento (UE) 2016/679, de 27 de
+        abril de 2016 (RGPD) y Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y Garantía de
+        Derechos Digitales, se informa a los usuarios de esta página web de que los datos de carácter personal que
+        faciliten a través de ella, tanto cumplimentando cualquier formulario como a través de correo electrónico, serán
+        tratados de conformidad con la presente Política de Protección de Datos.
       </p>
 
-      <h2>2. Finalidad del tratamiento</h2>
-      <p>Los datos personales que nos facilite serán tratados para las siguientes finalidades:</p>
+      <h2>1. Tratamiento de sus datos personales</h2>
+      <p>
+        El responsable del tratamiento de sus datos personales es: <strong>Sevilegalia Sociedad Limitada</strong> con NIF:
+        <strong>B90423575</strong> y dirección fiscal en <strong>C. Progreso, 20, 2ºA, 41013 Sevilla</strong>.
+      </p>
+
+      <h2>2. Medios utilizados para la recogida de datos</h2>
+      <p>
+        Los medios utilizados por la entidad Sevilegalia Sociedad Limitada para la recogida y posterior tratamiento de
+        datos personales son: formularios de contacto, correo electrónico, teléfono, WhatsApp, redes sociales, testimonios
+        y cookies.
+      </p>
+
+      <h2>3. Finalidad del tratamiento de los datos personales y plazo de conservación</h2>
       <ul>
-        <li>Gestionar las consultas y solicitudes de información realizadas a través del sitio web o por medios ordinarios.</li>
-        <li>Mantener la relación profesional precontractual o contractual cuando proceda.</li>
-        <li>Enviar comunicaciones relacionadas con los servicios solicitados, cuando exista base jurídica adecuada.</li>
-        <li>Cumplir obligaciones legales aplicables al ejercicio de la abogacía y la gestión del despacho.</li>
         <li>
-          Medición agregada de la audiencia del sitio web (páginas visitadas, volumen de tráfico, origen aproximado del
-          acceso, tipo de dispositivo), cuando se utilice una herramienta de analítica conforme a la política de cookies y,
-          en su caso, a la configuración de consentimiento aplicable.
+          Los datos personales facilitados a través del chat box habilitado en la web tienen como finalidad contactar con
+          el usuario. Estos datos se conservarán durante el tiempo necesario para cumplir la finalidad para la que fueron
+          recabados.
+        </li>
+        <li>
+          Los datos personales facilitados a través del formulario tienen como finalidad contactar con el interesado o la
+          interesada, remitirle información sobre los servicios que ofrecemos y requerirle la información necesaria para
+          elaborar un presupuesto adaptado a los servicios interesados, así como atender las consultas que pueda
+          realizarnos. Estos datos se conservarán durante el tiempo necesario para cumplir la finalidad para la que fueron
+          recabados.
+        </li>
+        <li>
+          Los datos personales facilitados a través de medios o canales habilitados en la web para la atención al
+          interesado o la interesada, como puede ser a través del correo electrónico, teléfono, WhatsApp y redes sociales,
+          tienen como finalidad atender y resolver cualquier tipo de consulta que sea realizada a través de estos canales
+          de comunicación, así como el envío de información. Estos datos se conservarán durante el tiempo imprescindible
+          para atender o resolver la consulta o solicitud realizada.
+        </li>
+        <li>
+          Los datos personales relativos a testimonios e imágenes que aparecen en la web tienen como finalidad generar
+          confianza y reforzar la información que se muestra en la web. Estos datos se conservarán mientras el interesado
+          o la interesada no retire el consentimiento prestado.
+        </li>
+        <li>
+          La información sobre el tratamiento que realiza el responsable de los datos personales a través del uso de cookies
+          está disponible en la <a href={withBase('/legal/cookies/')}>Política de Cookies</a>.
         </li>
       </ul>
 
-      <h2>3. Base jurídica</h2>
-      <p>El tratamiento se legitima en:</p>
+      <h2>4. Categorías de datos que se tratan</h2>
+      <p>En particular, los datos que trataremos incluyen las siguientes categorías:</p>
       <ul>
-        <li>
-          <strong>Consentimiento del interesado</strong>, cuando nos contacte voluntariamente o marque la casilla de
-          aceptación de la política de privacidad en formularios.
-        </li>
-        <li>
-          <strong>Interés legítimo</strong>, cuando corresponda para atender solicitudes, gestionar la seguridad del sitio
-          o mejorar la calidad del servicio, respetando sus derechos y libertades fundamentales.
-        </li>
-        <li>
-          <strong>Ejecución de medidas precontractuales o contractuales</strong>, cuando inicie una relación profesional con
-          el despacho.
-        </li>
-        <li><strong>Cumplimiento de obligaciones legales</strong>, cuando la normativa exija conservar o comunicar datos.</li>
+        <li>Datos identificativos y de contacto como nombre, apellidos, teléfono e email.</li>
+        <li>Datos relativos a situación económica.</li>
+        <li>Datos relativos al estado civil y régimen matrimonial.</li>
+        <li>Datos profesionales.</li>
+        <li>Datos necesarios para atender o resolver consultas.</li>
+        <li>Datos relativos a testimonios e imágenes.</li>
+        <li>Datos de navegación como visitas recibidas en la web, dirección IP, etc.</li>
       </ul>
 
-      <h2>4. Conservación de los datos</h2>
+      <h2>5. Decisiones automatizadas, perfiles y lógica aplicada</h2>
       <p>
-        Los datos se conservarán durante el tiempo necesario para cumplir la finalidad para la que fueron recabados y, en
-        su caso, durante los plazos legales de prescripción aplicables. Transcurridos dichos plazos, se suprimirán con
-        medidas de seguridad adecuadas o se anonimizarán.
+        La página web de la entidad Sevilegalia S.L. no utiliza la información personal recabada para elaborar perfiles de
+        las personas físicas e identificarlas.
       </p>
 
-      <h2>5. Destinatarios y transferencias</h2>
+      <h2>6. Legitimación del tratamiento de datos</h2>
       <p>
-        No cederemos sus datos a terceros salvo obligación legal o necesidad para la prestación del servicio (por ejemplo,
-        proveedores de infraestructura que actúen como encargados del tratamiento bajo contrato tipo art. 28 RGPD). No se
-        prevén transferencias internacionales fuera del Espacio Económico Europeo sin garantías adecuadas.
+        Los datos aportados a través del chat box y de los formularios de la web se tratan sobre la base legal del
+        consentimiento, el cual usted manifiesta de modo expreso marcando la casilla del consentimiento y/o al rellenar y
+        enviarnos dichos formularios. De igual modo, dichos datos son tratados sobre la base del interés legítimo del
+        responsable en atender sus consultas o solicitudes y enviarle información sobre nuestros servicios.
+      </p>
+      <p>
+        Los datos facilitados a través de email, teléfono, WhatsApp y redes sociales se tratan sobre la base legal del
+        consentimiento y del interés legítimo de contactar con usted para atender la solicitud o resolver la consulta que
+        nos haya formulado, así como proporcionarle la información que nos haya requerido y aquella relacionada con la
+        misma que pueda ser de su interés.
+      </p>
+      <p>
+        Los datos concernientes a imagen y testimonios que aparecen en la página web se tratan sobre la base legal del
+        consentimiento. Los datos facilitados a través de cookies están legitimados en el consentimiento.
       </p>
 
-      <h2>6. Derechos del interesado</h2>
-      <p>Usted puede ejercer los siguientes derechos:</p>
-      <ul>
-        <li><strong>Acceso</strong> — conocer qué datos tratamos y con qué finalidad.</li>
-        <li><strong>Rectificación</strong> — corregir datos inexactos o incompletos.</li>
-        <li><strong>Supresión</strong> — solicitar la eliminación cuando proceda.</li>
-        <li><strong>Oposición</strong> — oponerse al tratamiento en determinados supuestos.</li>
-        <li><strong>Limitación</strong> — solicitar la limitación del tratamiento.</li>
-        <li><strong>Portabilidad</strong> — recibir sus datos en formato estructurado, cuando aplique.</li>
-      </ul>
+      <h2>7. Destinatario de sus datos</h2>
       <p>
-        Para ejercer sus derechos puede dirigirse a la dirección de correo indicada en el apartado 1, acompañando copia de
-        documento identificativo. Tiene derecho a reclamar ante la Agencia Española de Protección de Datos (
-        <a href="https://www.aepd.es" rel="noopener noreferrer" target="_blank">www.aepd.es</a>).
+        Salvo obligación legal, los datos no se cederán a terceros sin contar con el consentimiento expreso del interesado
+        o la interesada. Sevilegalia S.L. trabaja con colaboradores/proveedores de servicios, empresas encargadas del
+        tratamiento como pueden ser gestorías, asesores fiscales, alojamiento online, etc., con los que se tiene firmado un
+        contrato de encargo y que disponen de un acceso limitado a sus datos y que están obligados a protegerlos y
+        utilizarlos exclusivamente para la ejecución del servicio prestado. No están previstas transferencias
+        internacionales de datos.
       </p>
 
-      <h2>7. Medidas de seguridad</h2>
+      <h2>8. Veracidad, exactitud y actualización de los datos personales</h2>
       <p>
-        Aplicamos medidas técnicas y organizativas apropiadas para garantizar un nivel de seguridad acorde al riesgo,
-        incluyendo la confidencialidad, integridad y disponibilidad de los datos.
+        Los datos personales que el usuario o la usuaria facilite a Sevilegalia S.L. deben ser verdaderos, exactos, estar
+        completos y actualizados, siendo responsable dicho usuario por los daños y perjuicios, directos o indirectos, que
+        pudieran ocasionarse como consecuencia del incumplimiento de dicha obligación. Al objeto de que los datos
+        personales se mantengan actualizados, el usuario o la usuaria deberán comunicar a la entidad Sevilegalia S.L.
+        cualquier modificación que en relación con los mismos tenga lugar. En el caso de que los datos aportados
+        pertenecieran a un tercero, el usuario o la usuaria garantiza que ha informado a dicho tercero y obtenido su
+        autorización para facilitar sus datos personales a Sevilegalia S.L.
+      </p>
+
+      <h2>9. Derechos del interesado o la interesada</h2>
+      <p>
+        Usted podrá ejercer sus derechos de acceso, rectificación, cancelación, limitación, portabilidad y oposición, así
+        como el derecho a no ser objeto de decisiones basadas únicamente en el tratamiento automatizado. Del mismo modo,
+        usted podrá revocar en cualquier momento el consentimiento prestado.
+      </p>
+      <p>
+        Para ejercitar cualquiera de estos derechos, deberá enviar un correo electrónico a
+        <a href="mailto:info@sevilegalia.com">info@sevilegalia.com</a>. Para ejercitar estos derechos puede utilizar los
+        modelos expresamente habilitados por la Agencia Española de Protección de Datos u otros elaborados por terceros. En
+        aquellos casos en los que usted haya prestado su consentimiento, autorizando a Sevilegalia S.L. al tratamiento de
+        sus datos personales, podrá revocar en cualquier momento dicho consentimiento, para lo cual solo tiene que enviar
+        una comunicación indicando qué consentimiento desea revocar; dicha revocación no afecta a los tratamientos de datos
+        realizados previamente a dicha revocación.
+      </p>
+
+      <h2>10. Reclamación ante la autoridad de control</h2>
+      <p>
+        Podrá presentar reclamación ante la Autoridad de Control en materia de Protección de Datos competente,
+        especialmente cuando no haya obtenido satisfacción en el ejercicio de sus derechos, mediante escrito dirigido a la
+        Agencia Española de Protección de Datos, C/ Jorge Juan n.º 6, 28001 Madrid, o bien accediendo a su sede
+        electrónica:
+        <a href="https://sedeagpd.gob.es/sede-electronica-web/" rel="noopener noreferrer" target="_blank"
+          >https://sedeagpd.gob.es/sede-electronica-web/</a
+        >.
+      </p>
+
+      <h2>11. Medidas de seguridad</h2>
+      <p>
+        Sevilegalia S.L. ha optado por implementar los niveles de seguridad más estrictos que permitan el adecuado
+        funcionamiento de la web, de sus funcionalidades y de sus servicios, preservando la integridad de los datos e
+        informaciones almacenadas. Los servicios son prestados con sus propios recursos tecnológicos y en ocasiones por
+        terceros que disponen de las medidas de seguridad necesarias para asegurar la imposibilidad de acceso no autorizado
+        según la técnica y tecnología ordinaria actual.
+      </p>
+
+      <h2>12. Cambios en la política de privacidad</h2>
+      <p>
+        Sevilegalia S.L. se reserva el derecho de modificar la Política de Privacidad de conformidad con los cambios
+        normativos. Cualquier modificación de dicha política será publicada en este sitio web.
       </p>
     </div>
   </article>

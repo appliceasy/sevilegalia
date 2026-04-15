@@ -1,48 +1,35 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/Hero.astro';
-import ServiceCard from '@/components/ServiceCard.astro';
 import CTASection from '@/components/CTASection.astro';
+import ValoresSection from '@/components/ValoresSection.astro';
 
 const meta = {
   title: 'Inicio',
   description:
-    'Asesoría jurídica integral para empresas y particulares. Más de 20 años de experiencia en derecho civil, mercantil, laboral y fiscal.',
+    'Despacho en Sevilla: asesoramiento civil, laboral y más. Más de 20 años de experiencia, explicada con claridad. Primera consulta gratuita.',
 };
 
-const heroImage =
-  'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80';
-const serviciosImage =
-  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80';
+/** Hero: vídeo en bucle (`public/`) + imagen como poster y fallback sin autoplay */
+const heroImage = '/fondo_hero.png';
+const heroVideo = '/video_corto.mp4';
+const serviciosImage = '/Imagen_secundaria.png';
 
 const valores = [
   {
-    titulo: 'Experiencia',
+    titulo: 'Trato directo',
     texto:
-      'Más de dos décadas asesorando a empresas y particulares en múltiples áreas del derecho.',
+      'Hablas con el letrado que lleva tu asunto, sin intermediarios. La comunicación va contigo, con detalle y continuidad.',
   },
   {
-    titulo: 'Compromiso',
-    texto: 'Defendemos los intereses de nuestros clientes con rigor, ética y dedicación.',
+    titulo: 'Compromiso con tu caso',
+    texto:
+      'Lo que nos confías nos importa: dedicación y rigor en cada paso, desde la primera consulta hasta la resolución.',
   },
   {
-    titulo: 'Cercanía',
-    texto: 'Trato directo y personalizado, adaptado a cada situación.',
-  },
-];
-
-const serviciosDestacados = [
-  {
-    titulo: 'Asesoría Fiscal y Contable',
-    descripcion: 'Optimización fiscal, cumplimiento normativo y planificación estratégica.',
-  },
-  {
-    titulo: 'Asesoría Laboral',
-    descripcion: 'Gestión laboral integral, contratos, despidos y prevención de conflictos.',
-  },
-  {
-    titulo: 'Gabinete Jurídico',
-    descripcion: 'Asistencia legal en derecho civil, mercantil y administrativo.',
+    titulo: 'Presencial u online',
+    texto:
+      'Citamos en el despacho o por medios telemáticos, según tu disponibilidad. Respuesta clara sin complicarte la agenda.',
   },
 ];
 ---
@@ -50,66 +37,120 @@ const serviciosDestacados = [
 <Layout title={meta.title} description={meta.description} canonicalPath="/">
   <Hero
     title="Soluciones jurídicas y asesoramiento integral para empresas y particulares"
-    subtitle="Más de 20 años ofreciendo seguridad legal, confianza y resultados."
-    ctaLabel="Solicitar consulta"
+    subtitle="Más de 20 años asesorando a empresas y particulares: criterio jurídico, lenguaje comprensible y un trato cercano desde el primer día."
+    ctaLabel="Contacta con nosotros"
     ctaHref="/contacto/"
     imageSrc={heroImage}
-    imageAlt="Interior de oficina jurídica moderna con mesa de reuniones y estantería legal"
-    imageLoading="lazy"
+    imageAlt="Despacho jurídico SeviLegalia: sala de reuniones y símbolos de la profesión"
+    imageLoading="eager"
+    videoSrc={heroVideo}
   />
 
-  <section class="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="valores-titulo">
-    <h2 id="valores-titulo" class="font-display text-center text-3xl font-bold text-primary">
-      Nuestros valores
-    </h2>
-    <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600">
-      La confianza de nuestros clientes se fundamenta en principios claros y un servicio riguroso.
-    </p>
-    <div class="mt-12 grid gap-8 md:grid-cols-3">
-      {
-        valores.map((v) => (
-          <div class="rounded-lg border border-neutral-border bg-neutral-surface p-8 text-center shadow-sm">
-            <h3 class="font-heading text-lg font-semibold text-primary">{v.titulo}</h3>
-            <p class="mt-3 text-sm leading-relaxed text-slate-600">{v.texto}</p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+  <ValoresSection valores={valores} />
 
-  <section class="bg-neutral-surface py-16" aria-labelledby="servicios-destacados-titulo">
+  <section
+    class="reveal-section bg-neutral-surface py-16 sm:py-20"
+    data-reveal
+    aria-labelledby="servicios-destacados-titulo"
+  >
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div>
-          <h2 id="servicios-destacados-titulo" class="font-display text-3xl font-bold text-primary">
-            Servicios destacados
-          </h2>
-          <p class="mt-4 text-slate-600">
-            Acompañamos a empresas y particulares con soluciones adaptadas a su sector y a su situación concreta.
-          </p>
-          <div class="mt-8 grid gap-6 md:grid-cols-3">
-            {serviciosDestacados.map((s) => <ServiceCard title={s.titulo} description={s.descripcion} />)}
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div class="space-y-10">
+          <div>
+            <h2
+              id="servicios-destacados-titulo"
+              class="text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-[2.5rem]"
+            >
+              En qué podemos ayudarte
+            </h2>
+          </div>
+
+          <div class="space-y-8 text-base text-slate-600 sm:text-lg">
+            <div>
+              <h3 class="font-heading text-xl font-semibold text-primary sm:text-2xl">Derecho civil y propiedad</h3>
+              <ul class="mt-4 list-disc space-y-2.5 pl-6 leading-relaxed">
+                <li>
+                  <strong class="text-slate-800">Derecho Inmobiliario y Urbanístico:</strong> Soluciones expertas para tu
+                  vivienda y propiedades.
+                </li>
+                <li><strong class="text-slate-800">Herencias.</strong></li>
+                <li>
+                  <strong class="text-slate-800">Divorcios:</strong> Gestión profesional y sensible de tus procesos
+                  familiares.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-heading text-xl font-semibold text-primary sm:text-2xl">Derecho laboral</h3>
+              <ul class="mt-4 list-disc space-y-2.5 pl-6 leading-relaxed">
+                <li>
+                  <strong class="text-slate-800">Despidos.</strong> Analizamos si un despido es improcedente o nulo.
+                </li>
+                <li><strong class="text-slate-800">Revisión de nóminas y contratos.</strong></li>
+                <li>
+                  <strong class="text-slate-800">Reclamaciones de cantidad:</strong> Asesoramiento directo para recuperar
+                  lo que te corresponde.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-heading text-xl font-semibold text-primary sm:text-2xl">Plan Tranquilidad</h3>
+              <p class="mt-4 leading-relaxed">
+                Cuota mensual (desde 25€) con consultas para cubrir dudas jurídicas del día a día con un profesional de
+                confianza.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-heading text-xl font-semibold text-primary sm:text-2xl">
+                Otros asuntos en los que podemos ayudarte
+              </h3>
+              <ul class="mt-4 list-disc space-y-2.5 pl-6 leading-relaxed">
+                <li>
+                  <strong class="text-slate-800">Contratos:</strong> Redacción y supervisión de acuerdos laborales,
+                  mercantiles o civiles.
+                </li>
+                <li>
+                  <strong class="text-slate-800">Reclamaciones Bancarias:</strong> Nulidad de tarjetas revolving y
+                  cláusulas de préstamos hipotecarios.
+                </li>
+                <li>
+                  <strong class="text-slate-800">Prestaciones:</strong> Solicitud del Complemento de Paternidad o Brecha de
+                  Género.
+                </li>
+                <li>
+                  <strong class="text-slate-800">Extranjería:</strong> Gestión de nacionalidad, permisos de residencia y
+                  renovaciones.
+                </li>
+                <li><strong class="text-slate-800">Asesoría:</strong> Soporte especializado en materia fiscal y contable.</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="overflow-hidden rounded-lg shadow-card ring-1 ring-slate-200/80">
+        <div class="overflow-hidden rounded-lg shadow-card ring-1 ring-slate-200/80 transition-shadow duration-layout ease-smooth hover:shadow-card-hover lg:sticky lg:top-28">
           <img
             src={serviciosImage}
-            alt="Documentos legales y pluma sobre escritorio de trabajo profesional"
+            alt="Detalle de escritorio jurídico: documentos y balanza de la justicia"
             width={800}
             height={600}
             loading="lazy"
             decoding="async"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover transition duration-700 ease-smooth motion-reduce:transition-none hover:scale-[1.02] motion-reduce:hover:scale-100"
           />
         </div>
       </div>
     </div>
   </section>
 
-  <CTASection
-    title="¿Necesita asesoramiento?"
-    text="Concerte una primera consulta y explíquenos su caso. Le orientaremos con claridad y confidencialidad."
-    buttonLabel="Ir a contacto"
-    buttonHref="/contacto/"
-  />
+  <div data-reveal class="reveal-section">
+    <CTASection
+      title="¿Hablamos de tu caso?"
+      text="Primera consulta sin coste. Cuéntanos la situación y te orientamos con claridad; te responderemos lo antes posible."
+      buttonLabel="Contacta con nosotros"
+      buttonHref="/contacto/"
+      prominent
+    />
+  </div>
 </Layout>
