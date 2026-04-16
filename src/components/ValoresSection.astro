@@ -19,30 +19,40 @@ const {
   valores,
   titulo = 'Nuestros valores',
   subtitulo = 'Resultados y trato: lo que nos piden quienes ya confían en el despacho.',
-  eyebrow = 'Por qué SeviLegalia',
+  eyebrow = 'Por qué Sevilegalia',
   idTitulo = 'valores-titulo',
 } = Astro.props;
 ---
 
 <section
-  class="reveal-section relative overflow-hidden bg-gradient-to-b from-primary/[0.07] via-white to-neutral-surface"
+  class="reveal-section relative overflow-hidden border-b border-primary/[0.12] bg-gradient-to-b from-[#eef6f3] via-white to-[#e4f0ec] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.85)]"
   data-reveal
   aria-labelledby={idTitulo}
 >
   <div
-    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -right-24 top-1/4 h-72 w-72 rounded-full bg-accent-highlight/25 blur-3xl sm:-right-32 sm:h-96 sm:w-96"
     aria-hidden="true"
   >
   </div>
 
-  <div class="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+  <div class="relative mx-auto max-w-content px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
     <div class="mx-auto max-w-3xl text-center">
       <p
         class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base sm:tracking-[0.2em]"
       >
         {eyebrow}
       </p>
-      <h2 id={idTitulo} class="mt-3 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">
+      <div
+        class="mx-auto mt-4 h-1 w-14 rounded-full bg-gradient-to-r from-accent via-primary to-accent-soft sm:w-16"
+        aria-hidden="true"
+      >
+      </div>
+      <h2 id={idTitulo} class="mt-5 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">
         {titulo}
       </h2>
       <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">

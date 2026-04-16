@@ -41,30 +41,55 @@ const valores = [
     ctaLabel="Contacta con nosotros"
     ctaHref="/contacto/"
     imageSrc={heroImage}
-    imageAlt="Despacho jurídico SeviLegalia: sala de reuniones y símbolos de la profesión"
+    imageAlt="Despacho jurídico Sevilegalia: sala de reuniones y símbolos de la profesión"
     imageLoading="eager"
     videoSrc={heroVideo}
+    asideImageSrc="/Sevilegalia.png"
+    asideImageAlt="Sevilegalia"
   />
 
   <ValoresSection valores={valores} />
 
   <section
-    class="reveal-section bg-neutral-surface py-16 sm:py-20"
+    class="reveal-section relative overflow-hidden bg-white py-20 shadow-[inset_0_1px_0_0_rgba(7,64,78,0.06)] sm:py-24 lg:py-28"
     data-reveal
     aria-labelledby="servicios-destacados-titulo"
   >
-    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
-        <div class="space-y-10">
-          <div>
-            <h2
-              id="servicios-destacados-titulo"
-              class="text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-[2.5rem]"
-            >
-              En qué podemos ayudarte
-            </h2>
-          </div>
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-primary/[0.06] blur-3xl sm:-left-28 sm:h-80 sm:w-80"
+      aria-hidden="true"
+    >
+    </div>
 
+    <div class="relative mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-14 max-w-3xl text-center sm:mb-16">
+        <p
+          class="font-heading text-sm font-semibold uppercase tracking-[0.18em] text-accent sm:text-base sm:tracking-[0.2em]"
+        >
+          Servicios y ámbitos
+        </p>
+        <div
+          class="mx-auto mt-4 h-1 w-14 rounded-full bg-gradient-to-r from-primary via-accent to-primary-muted sm:w-16"
+          aria-hidden="true"
+        >
+        </div>
+        <h2
+          id="servicios-destacados-titulo"
+          class="mt-5 text-balance font-display text-4xl font-bold leading-tight text-primary sm:text-5xl"
+        >
+          En qué podemos ayudarte
+        </h2>
+      </div>
+
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-14">
+        <div
+          class="rounded-3xl border border-neutral-border bg-neutral-surface/90 p-8 shadow-card ring-1 ring-primary/[0.04] sm:p-10"
+        >
           <div class="space-y-8 text-base text-slate-600 sm:text-lg">
             <div>
               <h3 class="font-heading text-xl font-semibold text-primary sm:text-2xl">Derecho civil y propiedad</h3>

@@ -19,11 +19,11 @@ export const GET: APIRoute = ({ site }) => {
     origin ? new URL(withBase(path), `${origin}/`).href : path;
 
   const body = [
-    '# SeviLegalia',
-    '> SEVILEGALIA SOCIEDAD LIMITADA es un despacho jurídico ubicado en Sevilla (España), especializado en asesoramiento legal integral para empresas, autónomos y particulares.',
+    '# Sevilegalia',
+    '> Sevilegalia Sociedad Limitada es un despacho jurídico ubicado en Sevilla (España), especializado en asesoramiento legal integral para empresas, autónomos y particulares.',
     '',
     '## Descripción',
-    'SeviLegalia ofrece servicios profesionales en distintas áreas del derecho, combinando experiencia jurídica, enfoque estratégico y atención personalizada.',
+    'Sevilegalia ofrece servicios profesionales en distintas áreas del derecho, combinando experiencia jurídica, enfoque estratégico y atención personalizada.',
     'El despacho está orientado a la prevención de riesgos legales, resolución de conflictos y cumplimiento normativo en el ámbito empresarial y personal.',
     '',
     '## Áreas de práctica',

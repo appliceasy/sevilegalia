@@ -17,28 +17,35 @@ const withBase = (path: string) =>
   class="sticky top-0 z-50 border-b border-neutral-border bg-primary/95 shadow-sm backdrop-blur transition-[background-color,box-shadow] duration-300 ease-out supports-[backdrop-filter]:bg-primary/90"
   role="banner"
 >
-  <div class="mx-auto flex max-w-content items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
-    <a
-      href={withBase('/')}
-      class="group flex min-w-0 flex-1 items-center gap-2.5 transition hover:opacity-95 focus-visible:outline-offset-4 sm:gap-3 md:flex-none"
-      aria-label="SeviLegalia — Inicio"
-    >
-      <img
-        src={withBase('/Icono_justicia_balanza.png')}
-        alt=""
-        width="48"
-        height="64"
-        class="h-9 w-auto max-h-11 shrink-0 object-contain object-center drop-shadow-sm sm:h-10"
-        decoding="async"
-        aria-hidden="true"
-      />
-      <span class="flex min-w-0 flex-col leading-tight">
-        <span class="font-display text-lg font-bold tracking-tight text-white sm:text-xl">SeviLegalia</span>
-        <span class="hidden text-[0.65rem] font-medium text-accent-highlight/90 sm:block sm:text-xs"
-          >A tu lado ante la justicia</span
-        >
-      </span>
-    </a>
+  <div class="mx-auto flex max-w-content items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
+    <div class="flex min-w-0 flex-1 items-center md:min-w-[12rem] md:flex-1">
+      <a
+        href={withBase('/')}
+        class="group flex min-w-0 flex-1 items-center gap-2 transition hover:opacity-95 focus-visible:outline-offset-4 sm:gap-2.5"
+        aria-label="Sevilegalia, A tu lado ante la justicia — Inicio"
+      >
+        <img
+          src={withBase('/Icono_justicia_balanza.png')}
+          alt=""
+          width="48"
+          height="64"
+          class="h-11 w-auto max-h-[3.25rem] shrink-0 object-contain object-center drop-shadow-sm sm:h-12 sm:max-h-14 lg:h-14 lg:max-h-[4rem]"
+          decoding="async"
+          aria-hidden="true"
+        />
+        <span class="flex min-w-0 flex-1 items-baseline gap-1.5 sm:gap-2">
+          <span class="font-display shrink-0 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl xl:text-5xl"
+            >Sevilegalia</span
+          >
+          <span
+            class="hidden min-w-0 font-medium leading-snug text-accent-highlight/90 sm:inline sm:text-lg md:text-xl lg:text-xl xl:text-2xl"
+            aria-hidden="true"
+          >
+            A tu lado ante la justicia
+          </span>
+        </span>
+      </a>
+    </div>
 
     <nav class="hidden items-center gap-1 md:flex" aria-label="Principal">
       {

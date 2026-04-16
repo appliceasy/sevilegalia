@@ -15,6 +15,9 @@ interface Props {
   videoSrc?: string;
   /** Pantalla completa solo con imagen (sin vídeo). Ideal para archivos en `/public/`. */
   fullBleedImage?: boolean;
+  /** Imagen opcional a la derecha del bloque de texto (p. ej. logo sin fondo), solo en modo cinematográfico */
+  asideImageSrc?: string;
+  asideImageAlt?: string;
 }
 
 const {
@@ -27,6 +30,8 @@ const {
   imageLoading = 'lazy',
   videoSrc,
   fullBleedImage = false,
+  asideImageSrc,
+  asideImageAlt = '',
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const withBase = (path: string) =>
@@ -83,37 +88,55 @@ const cinematic = showVideo || fullBleedImage;
           )
         }
         <div
-          class="absolute inset-0 bg-gradient-to-br from-primary-dark/95 via-primary/88 to-[#0d4a40]/85"
-          aria-hidden="true"
-        />
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,transparent_0%,rgba(7,64,78,0.55)_100%)]"
+          class="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-dark via-primary to-[#0d4a40] opacity-50"
           aria-hidden="true"
         />
       </div>
 
       <div class="relative z-10 mx-auto w-full max-w-content px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-        <div class="hero-enter max-w-3xl">
-          <p class="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent-highlight/90 motion-reduce:opacity-100 sm:text-base sm:tracking-[0.22em]">
-            SeviLegalia
-          </p>
-          <h1
-            id="hero-titulo"
-            class="mt-4 text-balance font-display text-4xl font-bold leading-[1.12] text-white sm:text-5xl sm:leading-[1.1] lg:text-[2.875rem] lg:leading-[1.08] xl:text-6xl"
-          >
-            {title}
-          </h1>
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl sm:leading-relaxed">
-            {subtitle}
-          </p>
-          <div class="mt-10 sm:mt-12">
-            <a
-              href={withBase(ctaHref)}
-              class="hero-cta inline-flex min-h-[3rem] items-center justify-center rounded-md bg-white px-8 py-3.5 font-heading text-base font-semibold text-primary shadow-lg transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-[3.25rem] sm:px-10 sm:text-lg"
+        <div
+          class:list={[
+            asideImageSrc &&
+              'grid grid-cols-1 gap-y-5 lg:grid-cols-2 lg:items-start lg:gap-x-10 lg:gap-y-0 xl:gap-x-14',
+          ]}
+        >
+          <div class:list={['hero-enter max-w-3xl', asideImageSrc && 'lg:max-w-none']}>
+            <p class="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent-highlight/90 motion-reduce:opacity-100 sm:text-base sm:tracking-[0.22em]">
+              Sevilegalia
+            </p>
+            <h1
+              id="hero-titulo"
+              class="mt-4 text-balance font-display text-4xl font-bold leading-[1.12] text-white sm:text-5xl sm:leading-[1.1] lg:text-[2.875rem] lg:leading-[1.08] xl:text-6xl"
             >
-              {ctaLabel}
-            </a>
+              {title}
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl sm:leading-relaxed">
+              {subtitle}
+            </p>
+            <div class="mt-10 sm:mt-12">
+              <a
+                href={withBase(ctaHref)}
+                class="hero-cta inline-flex min-h-[3rem] items-center justify-center rounded-md bg-white px-8 py-3.5 font-heading text-base font-semibold text-primary shadow-lg transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-[3.25rem] sm:px-10 sm:text-lg"
+              >
+                {ctaLabel}
+              </a>
+            </div>
           </div>
+          {
+            asideImageSrc && (
+              <div class="-mt-1 flex justify-center self-start sm:-mt-2 lg:-mt-10 lg:justify-end xl:-mt-12">
+                <img
+                  src={withBase(asideImageSrc)}
+                  alt={asideImageAlt}
+                  width={560}
+                  height={420}
+                  loading="eager"
+                  decoding="async"
+                  class="h-auto w-full max-w-sm object-contain object-top drop-shadow-[0_8px_32px_rgba(0,0,0,0.25)] sm:max-w-md lg:max-w-lg"
+                />
+              </div>
+            )
+          }
         </div>
       </div>
     </section>

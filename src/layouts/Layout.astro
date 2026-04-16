@@ -22,7 +22,7 @@ const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
 const normalizedCanonicalPath =
   canonicalPath === '/' ? '/' : canonicalPath.endsWith('/') ? canonicalPath : `${canonicalPath}/`;
 const canonical = `${siteUrl}${normalizedCanonicalPath === '/' ? '' : normalizedCanonicalPath}` || undefined;
-const fullTitle = title.includes('|') ? title : `${title} | SeviLegalia`;
+const fullTitle = title.includes('|') ? title : `${title} | Sevilegalia`;
 
 const toAbsolute = (path: string) =>
   siteUrl ? new URL(withBase(path), `${siteUrl}/`).href : '';
@@ -41,8 +41,8 @@ const structuredDataJson =
       {
         '@type': 'LegalService',
         '@id': organizationId,
-        name: 'SeviLegalia',
-        legalName: 'SEVILEGALIA SOCIEDAD LIMITADA',
+        name: 'Sevilegalia',
+        legalName: 'Sevilegalia Sociedad Limitada',
         url: toAbsolute('/'),
         logo: toAbsolute('/Icono_justicia_balanza.png'),
         email: 'info@sevilegalia.com',
@@ -60,7 +60,7 @@ const structuredDataJson =
         '@type': 'WebSite',
         '@id': websiteId,
         url: toAbsolute('/'),
-        name: 'SeviLegalia',
+        name: 'Sevilegalia',
         description: siteWideDescription,
         inLanguage: 'es-ES',
         publisher: { '@id': organizationId },
